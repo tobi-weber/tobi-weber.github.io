@@ -1,0 +1,44 @@
+<nav class="mainnav">
+	<ul>
+		{% if page.nav == "projects" %}
+			<li><a class="active" href="/">Projects</a></li>
+		{% else %}
+			<li><a href="/">Projects</a></li>
+		{% endif %}
+		 {% if page.nav == "about" %}
+			<li><a class="active" href="/about.html">About</a></li>
+		{% else %}
+			<li><a href="/about.html">About</a></li>
+		{% endif %}
+	</ul>
+</nav>
+<div class="nav-slider">
+	<div class="nav-selection {{ page.nav }}"></div>
+</div>
+
+{% if page.subnav %}
+
+	<div class="subnav-slider">
+	    <div class="subnav-selection {{ page.subnav }}"></div>
+	</div>
+
+	<nav class="subnav">
+	    <ul>
+	        {% if page.subnav == "home" %}
+	          <li><a href="/projects/{{ page.project }}" class="active">Home</a></li>
+	        {% else %}
+	            <li><a href="/projects/{{ page.project }}">Home</a></li>
+	        {% endif %}
+	        {% if page.subnav == "docs" %}
+	            <li><a href="/projects/{{ page.project }}/docs" class="active">Docs</a></li>
+	        {% else %}
+	            <li><a href="/projects/{{ page.project }}/docs">Docs</a></li>
+	        {% endif %}
+	        {% if page.subnav == "downloads" %}
+	            <li><a href="/projects/{{ page.project }}/downloads.html" class="active">Downloads</a></li>
+	        {% else %}
+	            <li><a href="/projects/{{ page.project }}/downloads.html">Downloads</a></li>
+	        {% endif %}
+	    </ul>
+	</nav>
+{% endif %}

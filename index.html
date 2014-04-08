@@ -1,0 +1,18 @@
+---
+layout: default
+title: Projects
+nav: projects
+---
+
+<section id="projects">
+	{% for project in site.data.projects %}
+		<a class="project" href="{{ project.link }}">
+			<div class="project-header">
+				<h3> {{ project.name }} </h3>
+			</div>
+			<div class="project-body">
+				<p> {{ project.summary }} </p>
+			</div>
+		</a>
+	{% endfor %}
+</section>

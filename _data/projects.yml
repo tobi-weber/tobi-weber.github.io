@@ -1,0 +1,8 @@
+- name: Levitas
+  summary: A lightweight wsgi framework.
+           Levitas is designed to be simple to implement and extendable.
+  link: projects/levitas/
+
+- name: Levitas Memstorage
+  summary: Easy to use memstorage server and client based on pythons multiprocessing module.
+  link: projects/levitas-memstorage/
