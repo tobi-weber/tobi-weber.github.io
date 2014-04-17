@@ -4,7 +4,7 @@
   box-sizing: border-box; }
 
 html {
-  font-family: "Ubuntu", Helvetica, Arial, sans-serif;
+  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
   font-weight: 100;
   margin: 0;
   color: #444444;
@@ -19,14 +19,34 @@ a:hover {
 
 h1, h2, h3, h4, h5 {
   color: #222222;
-  font-family: "Ubuntu Condensed", Helvetica, Arial, sans-serif;
-  font-weight: normal;
-  letter-spacing: -0.05em;
+  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+  font-weight: 500;
   margin: 0.4em 0; }
-  h1 a, h2 a, h3 a, h4 a, h5 a {
-    color: inherit; }
-  h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover {
-    text-decoration: none; }
+  
+h1 a, h2 a, h3 a, h4 a, h5 a {
+  color: inherit; }
+   
+h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover {
+  text-decoration: none; }
+
+h1 {
+  font-size: 2.2rem; }
+
+h2 {
+  font-size: 1.9rem; }
+  
+h3 {
+  font-size: 1.6rem; }
+
+h4 {
+  font-size: 1.6rem; }
+
+h5 {
+  font-size: 1.3rem; }
+  
+h5.logo {
+  	font-weight: normal;
+}
 
 iframe {
   width: 100%;
@@ -34,28 +54,6 @@ iframe {
 
 video {
   width: 100%; }
-
-h1 {
-  font-size: 3rem; }
-
-h2 {
-  font-size: 2.5rem; }
-
-h3 {
-  font-size: 2rem; }
-
-h4 {
-  font-size: 1.5rem; }
-
-h5 {
-  font-size: 1.2rem; }
-
-h5.logo {
-  font-size: 1.6rem; }
-
-h1.hero {
-  font-size: 4.5rem;
-  margin: 0.3em 0 0.1em; }
 
 p {
   line-height: 1.5em;
@@ -166,17 +164,17 @@ header .subnav-selection {
     width: 50px;
 }
 
-header .subnav-selection.home {
-    right: 156px;
-    width: 42px;
+header .subnav-selection.overview {
+    right: 150px;
+    width: 60px;
 }
 header .subnav-selection.docs {
-    right: 103px;
+    right: 97px;
     width: 34px;
 }
 header .subnav-selection.downloads {
     right: 0;
-    width: 82px;
+    width: 76px;
 }
 
 footer {
@@ -237,10 +235,21 @@ footer nav ul li {
   margin-right: 0; }
 
 pre, .highlight pre, .highlight code {
-  font-family: "Ubuntu Mono", monospace;
+  font-family: "Droid Sans Mono", monospace;
   font-weight: normal;
   word-wrap: normal;
-  font-size: 1rem;
+  font-size: 14px;
   line-height: 1.3em; }
+  
+p code {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #E1E4E5;
+    font-size: 75%;
+    max-width: 100%;
+    overflow-x: auto;
+    padding: 0 5px;
+    white-space: nowrap;
+}
+
 
   

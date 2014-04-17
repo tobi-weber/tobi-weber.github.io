@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: docs
 title: Levitas Memstorage
 nav: projects
 subnav: docs

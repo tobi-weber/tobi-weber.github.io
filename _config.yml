@@ -1,6 +1,6 @@
 name: Github Projects
 markdown: redcarpet
 redcarpet:
-  extensions: ["tables", "no_intra_emphasis", "autolink", "fenced_code_blocks", "highlighter"]
+  extensions: ["tables", "no_intra_emphasis", "autolink", "fenced_code_blocks", "highlighter", "with_toc_data"]
 pygments: true
 exclude: [.git, .gitignore, .project, Gemfile, Gemfile.lock]

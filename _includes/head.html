@@ -3,79 +3,16 @@
     <head>
         <meta charset="utf-8">
         <title>{{ page.title }}</title>
-        <link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700|Ubuntu:300,500,300italic,500italic|Ubuntu+Condensed' rel='stylesheet' type='text/css'>
-        <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet" type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Ubuntu+Condensed' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'>
+        <link href="/css/font-awesome.min.css" rel="stylesheet">
         <link href="/css/reset.css" rel="stylesheet">
         <link href="/css/pygments.css" rel="stylesheet">
         <link href="/css/counters.css" rel="stylesheet">
+        <link href="/css/toc.css" rel="stylesheet">
         <link href="/css/main.css" rel="stylesheet">
-        <script type="text/javascript" charset="utf-8">
-    		document.onreadystatechange = function() {
-		        if ( document.readyState == 'complete' ) {
-		        	
-		        	try {
-		        		console.log("Init nav")
-			            var active = document.querySelector( 'header nav.mainnav li a.active' ).innerHTML.toLowerCase(),
-			                links = document.querySelectorAll( 'header nav.mainnav li a'),
-			                selection = document.querySelector( 'header .nav-selection' ),
-			                i, j, link;
-			            for ( i = 0; i < links.length; i++ ) {
-			                link = links[ i ];
-			                console.log(link);
-			                link.addEventListener( 'mouseover', function() {
-			                    selection.className = 'nav-selection';
-			                    selection.className = 'nav-selection ' + this.innerHTML.toLowerCase();
-			                    console.log(this.innerHTML.toLowerCase());
-			                });
-			                link.addEventListener( 'mouseout', function() {
-			                    selection.className = 'nav-selection ' + active;
-			                });
-			            }
-		        	} catch( err ) {
-		        		console.log(err);
-		        	}
-		        	
-		        	try {
-			            var subactive = document.querySelector( 'header nav.subnav a.active' ).innerHTML.toLowerCase(),
-		                	sublinks = document.querySelectorAll( 'header nav.subnav li a'),
-		                	subselection = document.querySelector( 'header .subnav-selection' ),
-			                i, j, link;
-			            for ( i = 0; i < sublinks.length; i++ ) {
-			                link = sublinks[ i ];
-			                link.addEventListener( 'mouseover', function() {
-			                    subselection.className = 'subnav-selection';
-			                    subselection.className = 'subnav-selection ' + this.innerHTML.toLowerCase();
-			                });
-			                link.addEventListener( 'mouseout', function() {
-			                    subselection.className = 'subnav-selection ' + subactive;
-			                });
-			            }
-		        	} catch( err ) {
-		        		console.log(err);
-		        	}
-		        	
-		        	try {
-	        			text_codes = document.querySelectorAll('pre code');
-	        			for (i=0; i < text_codes.length; i++) {
-	        				var e = text_codes[i]
-	        				var new_text = [];
-	        				var text = e.innerHTML;
-	        				var lines = text.split("\n");
-	        				for (j=0; j < lines.length; j++) {
-	        					if (lines[j]) {
-	        						l = '<a name="line-'+(j+1)+'"></a>' + lines[j];
-	        						new_text.push(l);
-	        					}
-	        				}
-	        				var new_text = new_text.join("\n") + "\n";
-	        				e.innerHTML = new_text;
-	        			}
-		        	} catch( err ) {
-		        		console.log(err);
-		        	}
-		        	
-        		}
-        	};
-		</script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        <script src="/js/toc.js"></script>
     </head>
     <body>

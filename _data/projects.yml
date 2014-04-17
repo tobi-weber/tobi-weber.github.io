@@ -1,6 +1,7 @@
 - name: Levitas
-  summary: A lightweight wsgi framework.
-           Levitas is designed to be simple to implement and extendable.
+  summary: Levitas is a lightweight wsgi framework.
+           The main concept is the mapping between urls, regular expressions and a
+           corresponding handler classes. 
   link: projects/levitas/
 
 - name: Levitas Memstorage

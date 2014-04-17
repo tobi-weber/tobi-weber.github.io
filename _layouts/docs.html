@@ -1,6 +1,7 @@
 {% include head.html %}
 {% include nav_script.html %}
 {% include counters_script.html %}
+{% include toc_script.html %}
 	<div class="wrapper">
 		<header>
 			<div class="container">
@@ -11,7 +12,10 @@
 	    </header>
 	    
 	    <article class="container">
+	    	
 		    <h1>{{ page.title }}</h1>
+	    
+	    	<div class="toc"></div>
 		
 		    {{ content }}
 	    

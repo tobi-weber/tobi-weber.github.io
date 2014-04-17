@@ -24,15 +24,15 @@
 
 	<nav class="subnav">
 	    <ul>
-	        {% if page.subnav == "home" %}
-	          <li><a href="/projects/{{ page.project }}" class="active">Home</a></li>
+	        {% if page.subnav == "overview" %}
+	          <li><a href="/projects/{{ page.project }}" class="active">Overview</a></li>
 	        {% else %}
-	            <li><a href="/projects/{{ page.project }}">Home</a></li>
+	            <li><a href="/projects/{{ page.project }}">Overview</a></li>
 	        {% endif %}
 	        {% if page.subnav == "docs" %}
-	            <li><a href="/projects/{{ page.project }}/docs" class="active">Docs</a></li>
+	            <li><a href="/projects/{{ page.project }}/docs.html" class="active">Docs</a></li>
 	        {% else %}
-	            <li><a href="/projects/{{ page.project }}/docs">Docs</a></li>
+	            <li><a href="/projects/{{ page.project }}/docs.html">Docs</a></li>
 	        {% endif %}
 	        {% if page.subnav == "downloads" %}
 	            <li><a href="/projects/{{ page.project }}/downloads.html" class="active">Downloads</a></li>

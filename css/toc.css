@@ -1,0 +1,29 @@
+
+.toc {
+	margin-bottom: 2em;
+}
+
+.clickable-header {
+  cursor:pointer;
+}
+.clickable-header:hover {
+  text-decoration:underline;
+}
+.top-level-header {
+  display:inline;
+}
+
+.back-to-top {
+	content: "\f000";
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: inherit;
+    cursor: pointer;
+/*--adjust as necessary--*/
+	margin-left:5px;
+    line-height: 0px;
+    vertical-align: text-top;
+    width: 14px;
+    
+}

@@ -1,0 +1,21 @@
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		console.log("Init counters");
+		text_codes = document.querySelectorAll('pre code');
+		for (i=0; i < text_codes.length; i++) {
+			var e = text_codes[i]
+       		if (e.className != "text language-text") {
+   				var new_text = [];
+   				var text = e.innerHTML;
+   				var lines = text.split("\n");
+   				for (j=0; j < lines.length-1; j++) {
+ 					l = '<a name="line-'+(j+1)+'"></a>' + lines[j];
+ 					new_text.push(l);
+   				}
+   				var new_text = new_text.join("\n") + "\n";
+   				e.innerHTML = new_text;
+       		}
+		}
+	});
+</script>

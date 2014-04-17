@@ -2,7 +2,7 @@
 layout: default
 title: Levitas Memstorage
 nav: projects
-subnav: home
+subnav: overview
 project: levitas-memstorage
 ---
 
