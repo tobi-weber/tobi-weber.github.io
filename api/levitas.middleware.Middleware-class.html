@@ -1,0 +1,1146 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>levitas.middleware.Middleware</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="levitas-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="levitas-module.html">Package&nbsp;levitas</a> ::
+        <a href="levitas.middleware-module.html">Module&nbsp;middleware</a> ::
+        Class&nbsp;Middleware
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="levitas.middleware.Middleware-class.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS DESCRIPTION ==================== -->
+<h1 class="epydoc">Class Middleware</h1><p class="nomargin-top"><span class="codelink"><a href="levitas.middleware-pysrc.html#Middleware">source&nbsp;code</a></span></p>
+<pre class="base-tree">
+object --+
+         |
+        <strong class="uidshort">Middleware</strong>
+</pre>
+
+<hr />
+<h1 class="heading">Example settings</h1>
+    <p># Optional encoding settings. Default is utf-8 encoding = 
+    &quot;utf-8&quot;</p>
+    <p># A secret to sign cookies cookie_secret = 
+    &quot;my_cookie_secret&quot;</p>
+    <p># Custom cgi.FieldStorage class fieldstorage_class = 
+    LevitasFieldStorage</p>
+
+<!-- ==================== INSTANCE METHODS ==================== -->
+<a name="section-InstanceMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Instance Methods</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-InstanceMethods"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="levitas.middleware.Middleware-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">*args</span>,
+        <span class="summary-sig-arg">**kwargs</span>)</span><br />
+      x.__init__(...) initializes x; see help(type(x)) for signature</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="levitas.middleware-pysrc.html#Middleware.__init__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="getPath"></a><span class="summary-sig-name">getPath</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="levitas.middleware-pysrc.html#Middleware.getPath">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="addHeader"></a><span class="summary-sig-name">addHeader</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">name</span>,
+        <span class="summary-sig-arg">value</span>)</span><br />
+      Add a header to the response</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="levitas.middleware-pysrc.html#Middleware.addHeader">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="getHeader"></a><span class="summary-sig-name">getHeader</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">name</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="levitas.middleware-pysrc.html#Middleware.getHeader">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="url_groups"></a><span class="summary-sig-name">url_groups</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="levitas.middleware-pysrc.html#Middleware.url_groups">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="initEnviron"></a><span class="summary-sig-name">initEnviron</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">environ</span>,
+        <span class="summary-sig-arg">start_response</span>)</span><br />
+      Initialize the wsgi environment</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="levitas.middleware-pysrc.html#Middleware.initEnviron">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="log_request"></a><span class="summary-sig-name">log_request</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">code</span>=<span class="summary-sig-default">&quot;-&quot;</span>,
+        <span class="summary-sig-arg">size</span>=<span class="summary-sig-default">&quot;-&quot;</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="levitas.middleware-pysrc.html#Middleware.log_request">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="log_error"></a><span class="summary-sig-name">log_error</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">f</span>,
+        <span class="summary-sig-arg">*args</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="levitas.middleware-pysrc.html#Middleware.log_error">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="log_message"></a><span class="summary-sig-name">log_message</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">level</span>,
+        <span class="summary-sig-arg">f</span>,
+        <span class="summary-sig-arg">*args</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="levitas.middleware-pysrc.html#Middleware.log_message">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="levitas.middleware.Middleware-class.html#prepare" class="summary-sig-name">prepare</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Called before the request-method is called.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="levitas.middleware-pysrc.html#Middleware.prepare">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="head"></a><span class="summary-sig-name">head</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Can be overridden by sub-classes.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="levitas.middleware-pysrc.html#Middleware.head">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="get"></a><span class="summary-sig-name">get</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Can be overridden by sub-classes.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="levitas.middleware-pysrc.html#Middleware.get">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="post"></a><span class="summary-sig-name">post</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Can be overridden by sub-classes.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="levitas.middleware-pysrc.html#Middleware.post">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="delete"></a><span class="summary-sig-name">delete</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Can be overridden by sub-classes.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="levitas.middleware-pysrc.html#Middleware.delete">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="put"></a><span class="summary-sig-name">put</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Can be overridden by sub-classes.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="levitas.middleware-pysrc.html#Middleware.put">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="parseGET"></a><span class="summary-sig-name">parseGET</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Parse the query string in the url</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="levitas.middleware-pysrc.html#Middleware.parseGET">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="levitas.middleware.Middleware-class.html#parsePOST" class="summary-sig-name">parsePOST</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Parse the form data posted.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="levitas.middleware-pysrc.html#Middleware.parsePOST">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="responseError"></a><span class="summary-sig-name">responseError</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">code</span>,
+        <span class="summary-sig-arg">message</span>=<span class="summary-sig-default">None</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="levitas.middleware-pysrc.html#Middleware.responseError">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="redirect"></a><span class="summary-sig-name">redirect</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">url</span>,
+        <span class="summary-sig-arg">permanent</span>=<span class="summary-sig-default">False</span>)</span><br />
+      Redirect to an url</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="levitas.middleware-pysrc.html#Middleware.redirect">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="levitas.middleware.Middleware-class.html#get_browser_language" class="summary-sig-name">get_browser_language</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Determines the user's locale from Accept-Language header.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="levitas.middleware-pysrc.html#Middleware.get_browser_language">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="get_cookie"></a><span class="summary-sig-name">get_cookie</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">name</span>,
+        <span class="summary-sig-arg">default</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Returns the value of a cookie</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="levitas.middleware-pysrc.html#Middleware.get_cookie">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="levitas.middleware.Middleware-class.html#set_cookie" class="summary-sig-name">set_cookie</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">name</span>,
+        <span class="summary-sig-arg">value</span>,
+        <span class="summary-sig-arg">domain</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">path</span>=<span class="summary-sig-default">&quot;/&quot;</span>,
+        <span class="summary-sig-arg">httponly</span>=<span class="summary-sig-default">False</span>,
+        <span class="summary-sig-arg">expires</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">expires_days</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">expires_hours</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">expires_minutes</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">**kwargs</span>)</span><br />
+      Sets the given cookie name/value with the given options.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="levitas.middleware-pysrc.html#Middleware.set_cookie">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="clear_cookie"></a><span class="summary-sig-name">clear_cookie</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">name</span>,
+        <span class="summary-sig-arg">path</span>=<span class="summary-sig-default">&quot;/&quot;</span>,
+        <span class="summary-sig-arg">domain</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Deletes the cookie with the given name.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="levitas.middleware-pysrc.html#Middleware.clear_cookie">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="clear_all_cookies"></a><span class="summary-sig-name">clear_all_cookies</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Deletes all the cookies the user sent with this request.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="levitas.middleware-pysrc.html#Middleware.clear_all_cookies">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="levitas.middleware.Middleware-class.html#set_signed_cookie" class="summary-sig-name">set_signed_cookie</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">name</span>,
+        <span class="summary-sig-arg">value</span>,
+        <span class="summary-sig-arg">domain</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">path</span>=<span class="summary-sig-default">&quot;/&quot;</span>,
+        <span class="summary-sig-arg">httponly</span>=<span class="summary-sig-default">False</span>,
+        <span class="summary-sig-arg">expires</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">expires_days</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">expires_hours</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">expires_minutes</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">**kwargs</span>)</span><br />
+      Signs and timestamps a cookie so it cannot be forged.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="levitas.middleware-pysrc.html#Middleware.set_signed_cookie">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="get_signed_cookie"></a><span class="summary-sig-name">get_signed_cookie</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">name</span>)</span><br />
+      Returns the given signed cookie if it validates, or None.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="levitas.middleware-pysrc.html#Middleware.get_signed_cookie">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="_readEnviron"></a><span class="summary-sig-name">_readEnviron</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">environ</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="levitas.middleware-pysrc.html#Middleware._readEnviron">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="_startResponse"></a><span class="summary-sig-name">_startResponse</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">cookies</span>=<span class="summary-sig-default">True</span>)</span><br />
+      Start the response</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="levitas.middleware-pysrc.html#Middleware._startResponse">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="_getFilewrapper"></a><span class="summary-sig-name">_getFilewrapper</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">f</span>)</span><br />
+      Send a FILE</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="levitas.middleware-pysrc.html#Middleware._getFilewrapper">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="_loadCookies"></a><span class="summary-sig-name">_loadCookies</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Load the cookies from the response.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="levitas.middleware-pysrc.html#Middleware._loadCookies">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="_parse_qs"></a><span class="summary-sig-name">_parse_qs</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">qs</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="levitas.middleware-pysrc.html#Middleware._parse_qs">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="__call__"></a><span class="summary-sig-name">__call__</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">environ</span>,
+        <span class="summary-sig-arg">start_response</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="levitas.middleware-pysrc.html#Middleware.__call__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
+      <code>__delattr__</code>,
+      <code>__format__</code>,
+      <code>__getattribute__</code>,
+      <code>__hash__</code>,
+      <code>__new__</code>,
+      <code>__reduce__</code>,
+      <code>__reduce_ex__</code>,
+      <code>__repr__</code>,
+      <code>__setattr__</code>,
+      <code>__sizeof__</code>,
+      <code>__str__</code>,
+      <code>__subclasshook__</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS VARIABLES ==================== -->
+<a name="section-ClassVariables"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Class Variables</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-ClassVariables"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="SUPPORTED_METHODS"></a><span class="summary-name">SUPPORTED_METHODS</span> = <code title="&quot;get&quot;, &quot;head&quot;, &quot;post&quot;, &quot;delete&quot;, &quot;put&quot;">&quot;get&quot;, &quot;head&quot;, &quot;post&quot;, &quot;delete&quot;, &quot;put&quot;</code><br />
+      Supported HTTP-Methods
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="BLOCKSIZE"></a><span class="summary-name">BLOCKSIZE</span> = <code title="4096">4096</code><br />
+      Blocksize for sending files
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="LOG"></a><span class="summary-name">LOG</span> = <code title="True">True</code><br />
+      If the request should be logged
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="ERROR_MESSAGE_FORMAT"></a><span class="summary-name">ERROR_MESSAGE_FORMAT</span> = <code title="DEFAULT_ERROR_MESSAGE_FORMAT">DEFAULT_ERROR_MESSAGE_FORMAT</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="ERROR_CONTENT_TYPE"></a><span class="summary-name">ERROR_CONTENT_TYPE</span> = <code title="DEFAULT_ERROR_CONTENT_TYPE">DEFAULT_ERROR_CONTENT_TYPE</code>
+    </td>
+  </tr>
+</table>
+<!-- ==================== INSTANCE VARIABLES ==================== -->
+<a name="section-InstanceVariables"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Instance Variables</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-InstanceVariables"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="settings"></a><span class="summary-name">settings</span><br />
+      Settings-Object
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="re_match"></a><span class="summary-name">re_match</span><br />
+      match object for regular expression of the request path
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="request_method"></a><span class="summary-name">request_method</span><br />
+      HTTP-Request method
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="request_headers"></a><span class="summary-name">request_headers</span><br />
+      Headers from the request
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="response_headers"></a><span class="summary-name">response_headers</span><br />
+      Headers for the response
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="response_code"></a><span class="summary-name">response_code</span><br />
+      Response-code
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="path"></a><span class="summary-name">path</span><br />
+      path info
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="request_data"></a><span class="summary-name">request_data</span><br />
+      Request data
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="remote_host"></a><span class="summary-name">remote_host</span><br />
+      Remote host of the request
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="remote_address"></a><span class="summary-name">remote_address</span><br />
+      Remote address of the request
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="user_agent"></a><span class="summary-name">user_agent</span><br />
+      User agent of the request
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="url_scheme"></a><span class="summary-name">url_scheme</span><br />
+      Url scheme (http or https)
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="server_name"></a><span class="summary-name">server_name</span><br />
+      Server name
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="server_port"></a><span class="summary-name">server_port</span><br />
+      Server port
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="query_string"></a><span class="summary-name">query_string</span><br />
+      Query string
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="cookies"></a><span class="summary-name">cookies</span><br />
+      Cookies for the request
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="_new_cookies"></a><span class="summary-name">_new_cookies</span><br />
+      New cookies for the response
+    </td>
+  </tr>
+</table>
+<!-- ==================== PROPERTIES ==================== -->
+<a name="section-Properties"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Properties</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-Properties"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
+      <code>__class__</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== METHOD DETAILS ==================== -->
+<a name="section-MethodDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Method Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-MethodDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="__init__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">*args</span>,
+        <span class="sig-arg">**kwargs</span>)</span>
+    <br /><em class="fname">(Constructor)</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="levitas.middleware-pysrc.html#Middleware.__init__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>x.__init__(...) initializes x; see help(type(x)) for signature</p>
+  <dl class="fields">
+    <dt>Overrides:
+        object.__init__
+        <dd><em class="note">(inherited documentation)</em></dd>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="prepare"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">prepare</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="levitas.middleware-pysrc.html#Middleware.prepare">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Called before the request-method is called. Can be overridden by 
+  sub-classes.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="parsePOST"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">parsePOST</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="levitas.middleware-pysrc.html#Middleware.parsePOST">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Parse the form data posted. Can be overridden by sub-classes.</p>
+  <dl class="fields">
+    <dt>Returns:</dt>
+        <dd>0 or error code</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="get_browser_language"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">get_browser_language</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="levitas.middleware-pysrc.html#Middleware.get_browser_language">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Determines the user's locale from Accept-Language header.</p>
+  <p>See http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.4</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="set_cookie"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">set_cookie</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">name</span>,
+        <span class="sig-arg">value</span>,
+        <span class="sig-arg">domain</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">path</span>=<span class="sig-default">&quot;/&quot;</span>,
+        <span class="sig-arg">httponly</span>=<span class="sig-default">False</span>,
+        <span class="sig-arg">expires</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">expires_days</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">expires_hours</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">expires_minutes</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">**kwargs</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="levitas.middleware-pysrc.html#Middleware.set_cookie">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Sets the given cookie name/value with the given options.</p>
+  <p>Additional keyword request_data are set on the Cookie.Morsel directly.
+  See http://docs.python.org/library/cookie.html#morsel-objects for 
+  available attributes.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="set_signed_cookie"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">set_signed_cookie</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">name</span>,
+        <span class="sig-arg">value</span>,
+        <span class="sig-arg">domain</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">path</span>=<span class="sig-default">&quot;/&quot;</span>,
+        <span class="sig-arg">httponly</span>=<span class="sig-default">False</span>,
+        <span class="sig-arg">expires</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">expires_days</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">expires_hours</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">expires_minutes</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">**kwargs</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="levitas.middleware-pysrc.html#Middleware.set_signed_cookie">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Signs and timestamps a cookie so it cannot be forged.</p>
+  <p>You must specify the &quot;cookie_secret&quot; setting in your 
+  settings FILE to use this method. It should be a long, random sequence of
+  bytes to be used as the HMAC secret for the signature.</p>
+  <p>To read a cookie set with this method, use get_signed_cookie().</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="levitas-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Wed Apr 16 11:40:43 2014
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

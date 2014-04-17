@@ -1,0 +1,555 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>levitas.middlewares.fileMiddleware</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="levitas-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="levitas-module.html">Package&nbsp;levitas</a> ::
+        <a href="levitas.middlewares-module.html">Package&nbsp;middlewares</a> ::
+        Module&nbsp;fileMiddleware
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="levitas.middlewares.fileMiddleware-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="levitas.middlewares.fileMiddleware-module.html">Module levitas.middlewares.fileMiddleware</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno">  1</tt>  <tt class="py-line"><tt class="py-comment"># -*- coding: utf-8 -*-</tt> </tt>
+<a name="L2"></a><tt class="py-lineno">  2</tt>  <tt class="py-line"><tt class="py-comment"># Copyright (C) 2010-2014 Tobias Weber &lt;tobi-weber@gmx.de&gt;</tt> </tt>
+<a name="L3"></a><tt class="py-lineno">  3</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L4"></a><tt class="py-lineno">  4</tt>  <tt class="py-line"><tt class="py-comment"># Licensed under the Apache License, Version 2.0 (the "License");</tt> </tt>
+<a name="L5"></a><tt class="py-lineno">  5</tt>  <tt class="py-line"><tt class="py-comment"># you may not use this file except in compliance with the License.</tt> </tt>
+<a name="L6"></a><tt class="py-lineno">  6</tt>  <tt class="py-line"><tt class="py-comment"># You may obtain a copy of the License at</tt> </tt>
+<a name="L7"></a><tt class="py-lineno">  7</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L8"></a><tt class="py-lineno">  8</tt>  <tt class="py-line"><tt class="py-comment">#   http://www.apache.org/licenses/LICENSE-2.0</tt> </tt>
+<a name="L9"></a><tt class="py-lineno">  9</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L10"></a><tt class="py-lineno"> 10</tt>  <tt class="py-line"><tt class="py-comment"># Unless required by applicable law or agreed to in writing, software</tt> </tt>
+<a name="L11"></a><tt class="py-lineno"> 11</tt>  <tt class="py-line"><tt class="py-comment"># distributed under the License is distributed on an "AS IS" BASIS,</tt> </tt>
+<a name="L12"></a><tt class="py-lineno"> 12</tt>  <tt class="py-line"><tt class="py-comment"># WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</tt> </tt>
+<a name="L13"></a><tt class="py-lineno"> 13</tt>  <tt class="py-line"><tt class="py-comment"># See the License for the specific language governing permissions and</tt> </tt>
+<a name="L14"></a><tt class="py-lineno"> 14</tt>  <tt class="py-line"><tt class="py-comment"># limitations under the License.</tt> </tt>
+<a name="L15"></a><tt class="py-lineno"> 15</tt>  <tt class="py-line"> </tt>
+<a name="L16"></a><tt class="py-lineno"> 16</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">os</tt> </tt>
+<a name="L17"></a><tt class="py-lineno"> 17</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">stat</tt> </tt>
+<a name="L18"></a><tt class="py-lineno"> 18</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">mimetypes</tt> </tt>
+<a name="L19"></a><tt class="py-lineno"> 19</tt>  <tt class="py-line"><tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L20"></a><tt class="py-lineno"> 20</tt>  <tt class="py-line">    <tt class="py-keyword">from</tt> <tt class="py-name">urllib</tt> <tt class="py-keyword">import</tt> <tt class="py-name">unquote</tt>  <tt class="py-comment"># python 2</tt> </tt>
+<a name="L21"></a><tt class="py-lineno"> 21</tt>  <tt class="py-line"><tt class="py-keyword">except</tt> <tt class="py-name">ImportError</tt><tt class="py-op">:</tt> </tt>
+<a name="L22"></a><tt class="py-lineno"> 22</tt>  <tt class="py-line">    <tt class="py-keyword">from</tt> <tt class="py-name">urllib</tt><tt class="py-op">.</tt><tt class="py-name">parse</tt> <tt class="py-keyword">import</tt> <tt class="py-name">unquote</tt>  <tt class="py-comment"># python 3</tt> </tt>
+<a name="L23"></a><tt class="py-lineno"> 23</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">posixpath</tt> </tt>
+<a name="L24"></a><tt class="py-lineno"> 24</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">logging</tt> </tt>
+<a name="L25"></a><tt class="py-lineno"> 25</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">time</tt> </tt>
+<a name="L26"></a><tt class="py-lineno"> 26</tt>  <tt class="py-line"><tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L27"></a><tt class="py-lineno"> 27</tt>  <tt class="py-line">    <tt class="py-keyword">from</tt> <tt class="py-name">cookielib</tt> <tt class="py-keyword">import</tt> <tt class="py-name">http2time</tt>  <tt class="py-comment"># python 2</tt> </tt>
+<a name="L28"></a><tt class="py-lineno"> 28</tt>  <tt class="py-line"><tt class="py-keyword">except</tt> <tt class="py-name">ImportError</tt><tt class="py-op">:</tt> </tt>
+<a name="L29"></a><tt class="py-lineno"> 29</tt>  <tt class="py-line">    <tt class="py-keyword">from</tt> <tt class="py-name">http</tt><tt class="py-op">.</tt><tt class="py-name">cookiejar</tt> <tt class="py-keyword">import</tt> <tt class="py-name">http2time</tt>  <tt class="py-comment"># python 3</tt> </tt>
+<a name="L30"></a><tt class="py-lineno"> 30</tt>  <tt class="py-line"> </tt>
+<a name="L31"></a><tt class="py-lineno"> 31</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-0" class="py-name" targets="Package levitas=levitas-module.html"><a title="levitas" class="py-name" href="#" onclick="return doclink('link-0', 'levitas', 'link-0');">levitas</a></tt><tt class="py-op">.</tt><tt id="link-1" class="py-name" targets="Package levitas.lib=levitas.lib-module.html"><a title="levitas.lib" class="py-name" href="#" onclick="return doclink('link-1', 'lib', 'link-1');">lib</a></tt> <tt class="py-keyword">import</tt> <tt id="link-2" class="py-name" targets="Module levitas.lib.utils=levitas.lib.utils-module.html"><a title="levitas.lib.utils" class="py-name" href="#" onclick="return doclink('link-2', 'utils', 'link-2');">utils</a></tt> </tt>
+<a name="L32"></a><tt class="py-lineno"> 32</tt>  <tt class="py-line"> </tt>
+<a name="L33"></a><tt class="py-lineno"> 33</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-op">.</tt><tt class="py-op">.</tt><tt id="link-3" class="py-name" targets="Module levitas.middleware=levitas.middleware-module.html"><a title="levitas.middleware" class="py-name" href="#" onclick="return doclink('link-3', 'middleware', 'link-3');">middleware</a></tt> <tt class="py-keyword">import</tt> <tt id="link-4" class="py-name" targets="Class levitas.middleware.Middleware=levitas.middleware.Middleware-class.html"><a title="levitas.middleware.Middleware" class="py-name" href="#" onclick="return doclink('link-4', 'Middleware', 'link-4');">Middleware</a></tt> </tt>
+<a name="L34"></a><tt class="py-lineno"> 34</tt>  <tt class="py-line"> </tt>
+<a name="L35"></a><tt class="py-lineno"> 35</tt>  <tt class="py-line"> </tt>
+<a name="L36"></a><tt class="py-lineno"> 36</tt>  <tt class="py-line"><tt id="link-5" class="py-name" targets="Variable levitas.factory.log=levitas.factory-module.html#log,Variable levitas.handler.log=levitas.handler-module.html#log,Variable levitas.lib.daemonize.log=levitas.lib.daemonize-module.html#log,Variable levitas.lib.levitasFieldStorage.log=levitas.lib.levitasFieldStorage-module.html#log,Variable levitas.lib.secure_cookie.log=levitas.lib.secure_cookie-module.html#log,Variable levitas.lib.settings.log=levitas.lib.settings-module.html#log,Variable levitas.lib.singleton.log=levitas.lib.singleton-module.html#log,Method levitas.lib.winservice.WinService.log()=levitas.lib.winservice.WinService-class.html#log,Variable levitas.middleware.log=levitas.middleware-module.html#log,Variable levitas.middlewares.appMiddleware.log=levitas.middlewares.appMiddleware-module.html#log,Variable levitas.middlewares.dynSiteMiddleware.log=levitas.middlewares.dynSiteMiddleware-module.html#log,Variable levitas.middlewares.fileMiddleware.log=levitas.middlewares.fileMiddleware-module.html#log,Variable levitas.middlewares.jsonMiddleware.log=levitas.middlewares.jsonMiddleware-module.html#log,Variable levitas.middlewares.loggerMiddleware.log=levitas.middlewares.loggerMiddleware-module.html#log,Variable levitas.middlewares.redirectMiddleware.log=levitas.middlewares.redirectMiddleware-module.html#log,Variable levitas.server.cherrypyServer.log=levitas.server.cherrypyServer-module.html#log,Variable levitas.server.eventletServer.log=levitas.server.eventletServer-module.html#log,Variable levitas.server.testServer.log=levitas.server.testServer-module.html#log"><a title="levitas.factory.log
+levitas.handler.log
+levitas.lib.daemonize.log
+levitas.lib.levitasFieldStorage.log
+levitas.lib.secure_cookie.log
+levitas.lib.settings.log
+levitas.lib.singleton.log
+levitas.lib.winservice.WinService.log
+levitas.middleware.log
+levitas.middlewares.appMiddleware.log
+levitas.middlewares.dynSiteMiddleware.log
+levitas.middlewares.fileMiddleware.log
+levitas.middlewares.jsonMiddleware.log
+levitas.middlewares.loggerMiddleware.log
+levitas.middlewares.redirectMiddleware.log
+levitas.server.cherrypyServer.log
+levitas.server.eventletServer.log
+levitas.server.testServer.log" class="py-name" href="#" onclick="return doclink('link-5', 'log', 'link-5');">log</a></tt> <tt class="py-op">=</tt> <tt class="py-name">logging</tt><tt class="py-op">.</tt><tt class="py-name">getLogger</tt><tt class="py-op">(</tt><tt class="py-string">"levitas.middleware.fileMiddleware"</tt><tt class="py-op">)</tt> </tt>
+<a name="L37"></a><tt class="py-lineno"> 37</tt>  <tt class="py-line"> </tt>
+<a name="L38"></a><tt class="py-lineno"> 38</tt>  <tt class="py-line"> </tt>
+<a name="FileMiddleware"></a><div id="FileMiddleware-def"><a name="L39"></a><tt class="py-lineno"> 39</tt> <a class="py-toggle" href="#" id="FileMiddleware-toggle" onclick="return toggle('FileMiddleware');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="levitas.middlewares.fileMiddleware.FileMiddleware-class.html">FileMiddleware</a><tt class="py-op">(</tt><tt class="py-base-class">Middleware</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="FileMiddleware-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="FileMiddleware-expanded"><a name="L40"></a><tt class="py-lineno"> 40</tt>  <tt class="py-line">    <tt class="py-docstring">"""</tt> </tt>
+<a name="L41"></a><tt class="py-lineno"> 41</tt>  <tt class="py-line"><tt class="py-docstring">    Handles static files from a given path.</tt> </tt>
+<a name="L42"></a><tt class="py-lineno"> 42</tt>  <tt class="py-line"><tt class="py-docstring">    </tt> </tt>
+<a name="L43"></a><tt class="py-lineno"> 43</tt>  <tt class="py-line"><tt class="py-docstring">    Example settings entry:</tt> </tt>
+<a name="L44"></a><tt class="py-lineno"> 44</tt>  <tt class="py-line"><tt class="py-docstring">    urls = [(r"^/(.*)", FileMiddleware, {"path": "/path/to/files"})]</tt> </tt>
+<a name="L45"></a><tt class="py-lineno"> 45</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L46"></a><tt class="py-lineno"> 46</tt>  <tt class="py-line">     </tt>
+<a name="L47"></a><tt class="py-lineno"> 47</tt>  <tt class="py-line">    <tt id="link-6" class="py-name" targets="Variable levitas.middleware.Middleware.LOG=levitas.middleware.Middleware-class.html#LOG,Variable levitas.middlewares.appMiddleware.AppMiddleware.LOG=levitas.middlewares.appMiddleware.AppMiddleware-class.html#LOG,Variable levitas.middlewares.fileMiddleware.FileMiddleware.LOG=levitas.middlewares.fileMiddleware.FileMiddleware-class.html#LOG,Variable levitas.middlewares.jsonMiddleware.JSONMiddleware.LOG=levitas.middlewares.jsonMiddleware.JSONMiddleware-class.html#LOG,Variable levitas.middlewares.loggerMiddleware.LoggerMiddleware.LOG=levitas.middlewares.loggerMiddleware.LoggerMiddleware-class.html#LOG,Variable levitas.middlewares.redirectMiddleware.RedirectMiddleware.LOG=levitas.middlewares.redirectMiddleware.RedirectMiddleware-class.html#LOG"><a title="levitas.middleware.Middleware.LOG
+levitas.middlewares.appMiddleware.AppMiddleware.LOG
+levitas.middlewares.fileMiddleware.FileMiddleware.LOG
+levitas.middlewares.jsonMiddleware.JSONMiddleware.LOG
+levitas.middlewares.loggerMiddleware.LoggerMiddleware.LOG
+levitas.middlewares.redirectMiddleware.RedirectMiddleware.LOG" class="py-name" href="#" onclick="return doclink('link-6', 'LOG', 'link-6');">LOG</a></tt> <tt class="py-op">=</tt> <tt class="py-name">True</tt> </tt>
+<a name="L48"></a><tt class="py-lineno"> 48</tt>  <tt class="py-line">     </tt>
+<a name="L49"></a><tt class="py-lineno"> 49</tt>  <tt class="py-line">    <tt id="link-7" class="py-name" targets="Variable levitas.middleware.Middleware.BLOCKSIZE=levitas.middleware.Middleware-class.html#BLOCKSIZE,Variable levitas.middlewares.fileMiddleware.FileMiddleware.BLOCKSIZE=levitas.middlewares.fileMiddleware.FileMiddleware-class.html#BLOCKSIZE"><a title="levitas.middleware.Middleware.BLOCKSIZE
+levitas.middlewares.fileMiddleware.FileMiddleware.BLOCKSIZE" class="py-name" href="#" onclick="return doclink('link-7', 'BLOCKSIZE', 'link-7');">BLOCKSIZE</a></tt> <tt class="py-op">=</tt> <tt class="py-number">4096</tt> </tt>
+<a name="L50"></a><tt class="py-lineno"> 50</tt>  <tt class="py-line">     </tt>
+<a name="L51"></a><tt class="py-lineno"> 51</tt>  <tt class="py-line">    <tt id="link-8" class="py-name" targets="Variable levitas.middlewares.fileMiddleware.FileMiddleware.MIMETYPES=levitas.middlewares.fileMiddleware.FileMiddleware-class.html#MIMETYPES"><a title="levitas.middlewares.fileMiddleware.FileMiddleware.MIMETYPES" class="py-name" href="#" onclick="return doclink('link-8', 'MIMETYPES', 'link-8');">MIMETYPES</a></tt> <tt class="py-op">=</tt> <tt class="py-op">{</tt><tt class="py-op">}</tt> </tt>
+<a name="L52"></a><tt class="py-lineno"> 52</tt>  <tt class="py-line">     </tt>
+<a name="L53"></a><tt class="py-lineno"> 53</tt>  <tt class="py-line">    <tt id="link-9" class="py-name" targets="Variable levitas.middlewares.fileMiddleware.FileMiddleware.DAY_SEC=levitas.middlewares.fileMiddleware.FileMiddleware-class.html#DAY_SEC"><a title="levitas.middlewares.fileMiddleware.FileMiddleware.DAY_SEC" class="py-name" href="#" onclick="return doclink('link-9', 'DAY_SEC', 'link-9');">DAY_SEC</a></tt> <tt class="py-op">=</tt> <tt class="py-number">360</tt> <tt class="py-op">*</tt> <tt class="py-number">24</tt> <tt class="py-op">*</tt> <tt class="py-number">60</tt> <tt class="py-op">*</tt> <tt class="py-number">60</tt> </tt>
+<a name="L54"></a><tt class="py-lineno"> 54</tt>  <tt class="py-line">     </tt>
+<a name="L55"></a><tt class="py-lineno"> 55</tt>  <tt class="py-line">    <tt id="link-10" class="py-name" targets="Variable levitas.middlewares.fileMiddleware.FileMiddleware.CACHE=levitas.middlewares.fileMiddleware.FileMiddleware-class.html#CACHE"><a title="levitas.middlewares.fileMiddleware.FileMiddleware.CACHE" class="py-name" href="#" onclick="return doclink('link-10', 'CACHE', 'link-10');">CACHE</a></tt> <tt class="py-op">=</tt> <tt class="py-op">{</tt><tt class="py-string">".htm"</tt><tt class="py-op">:</tt> <tt class="py-op">{</tt><tt class="py-string">"max_age"</tt><tt class="py-op">:</tt> <tt id="link-11" class="py-name"><a title="levitas.middlewares.fileMiddleware.FileMiddleware.DAY_SEC" class="py-name" href="#" onclick="return doclink('link-11', 'DAY_SEC', 'link-9');">DAY_SEC</a></tt><tt class="py-op">,</tt> </tt>
+<a name="L56"></a><tt class="py-lineno"> 56</tt>  <tt class="py-line">                      <tt class="py-string">"must_revalidate"</tt><tt class="py-op">:</tt> <tt class="py-name">True</tt> </tt>
+<a name="L57"></a><tt class="py-lineno"> 57</tt>  <tt class="py-line">                     <tt class="py-op">}</tt><tt class="py-op">,</tt> </tt>
+<a name="L58"></a><tt class="py-lineno"> 58</tt>  <tt class="py-line">             <tt class="py-string">".html"</tt><tt class="py-op">:</tt> <tt class="py-op">{</tt><tt class="py-string">"max_age"</tt><tt class="py-op">:</tt> <tt id="link-12" class="py-name"><a title="levitas.middlewares.fileMiddleware.FileMiddleware.DAY_SEC" class="py-name" href="#" onclick="return doclink('link-12', 'DAY_SEC', 'link-9');">DAY_SEC</a></tt><tt class="py-op">,</tt> </tt>
+<a name="L59"></a><tt class="py-lineno"> 59</tt>  <tt class="py-line">                       <tt class="py-string">"must_revalidate"</tt><tt class="py-op">:</tt> <tt class="py-name">True</tt> </tt>
+<a name="L60"></a><tt class="py-lineno"> 60</tt>  <tt class="py-line">                      <tt class="py-op">}</tt><tt class="py-op">,</tt> </tt>
+<a name="L61"></a><tt class="py-lineno"> 61</tt>  <tt class="py-line">             <tt class="py-string">".ico"</tt><tt class="py-op">:</tt> <tt class="py-op">{</tt><tt class="py-string">"max_age"</tt><tt class="py-op">:</tt> <tt id="link-13" class="py-name"><a title="levitas.middlewares.fileMiddleware.FileMiddleware.DAY_SEC" class="py-name" href="#" onclick="return doclink('link-13', 'DAY_SEC', 'link-9');">DAY_SEC</a></tt><tt class="py-op">,</tt> </tt>
+<a name="L62"></a><tt class="py-lineno"> 62</tt>  <tt class="py-line">                      <tt class="py-string">"must_revalidate"</tt><tt class="py-op">:</tt> <tt class="py-name">True</tt> </tt>
+<a name="L63"></a><tt class="py-lineno"> 63</tt>  <tt class="py-line">                     <tt class="py-op">}</tt><tt class="py-op">,</tt> </tt>
+<a name="L64"></a><tt class="py-lineno"> 64</tt>  <tt class="py-line">             <tt class="py-string">".jpg"</tt><tt class="py-op">:</tt> <tt class="py-op">{</tt><tt class="py-string">"max_age"</tt><tt class="py-op">:</tt> <tt id="link-14" class="py-name"><a title="levitas.middlewares.fileMiddleware.FileMiddleware.DAY_SEC" class="py-name" href="#" onclick="return doclink('link-14', 'DAY_SEC', 'link-9');">DAY_SEC</a></tt><tt class="py-op">,</tt> </tt>
+<a name="L65"></a><tt class="py-lineno"> 65</tt>  <tt class="py-line">                      <tt class="py-string">"must_revalidate"</tt><tt class="py-op">:</tt> <tt class="py-name">True</tt> </tt>
+<a name="L66"></a><tt class="py-lineno"> 66</tt>  <tt class="py-line">                     <tt class="py-op">}</tt><tt class="py-op">,</tt> </tt>
+<a name="L67"></a><tt class="py-lineno"> 67</tt>  <tt class="py-line">             <tt class="py-string">".jpeg"</tt><tt class="py-op">:</tt> <tt class="py-op">{</tt><tt class="py-string">"max_age"</tt><tt class="py-op">:</tt> <tt id="link-15" class="py-name"><a title="levitas.middlewares.fileMiddleware.FileMiddleware.DAY_SEC" class="py-name" href="#" onclick="return doclink('link-15', 'DAY_SEC', 'link-9');">DAY_SEC</a></tt><tt class="py-op">,</tt> </tt>
+<a name="L68"></a><tt class="py-lineno"> 68</tt>  <tt class="py-line">                       <tt class="py-string">"must_revalidate"</tt><tt class="py-op">:</tt> <tt class="py-name">True</tt> </tt>
+<a name="L69"></a><tt class="py-lineno"> 69</tt>  <tt class="py-line">                      <tt class="py-op">}</tt><tt class="py-op">,</tt> </tt>
+<a name="L70"></a><tt class="py-lineno"> 70</tt>  <tt class="py-line">             <tt class="py-string">".png"</tt><tt class="py-op">:</tt> <tt class="py-op">{</tt><tt class="py-string">"max_age"</tt><tt class="py-op">:</tt> <tt id="link-16" class="py-name"><a title="levitas.middlewares.fileMiddleware.FileMiddleware.DAY_SEC" class="py-name" href="#" onclick="return doclink('link-16', 'DAY_SEC', 'link-9');">DAY_SEC</a></tt><tt class="py-op">,</tt> </tt>
+<a name="L71"></a><tt class="py-lineno"> 71</tt>  <tt class="py-line">                      <tt class="py-string">"must_revalidate"</tt><tt class="py-op">:</tt> <tt class="py-name">True</tt> </tt>
+<a name="L72"></a><tt class="py-lineno"> 72</tt>  <tt class="py-line">                     <tt class="py-op">}</tt><tt class="py-op">,</tt> </tt>
+<a name="L73"></a><tt class="py-lineno"> 73</tt>  <tt class="py-line">             <tt class="py-string">".gif"</tt><tt class="py-op">:</tt> <tt class="py-op">{</tt><tt class="py-string">"max_age"</tt><tt class="py-op">:</tt> <tt id="link-17" class="py-name"><a title="levitas.middlewares.fileMiddleware.FileMiddleware.DAY_SEC" class="py-name" href="#" onclick="return doclink('link-17', 'DAY_SEC', 'link-9');">DAY_SEC</a></tt><tt class="py-op">,</tt> </tt>
+<a name="L74"></a><tt class="py-lineno"> 74</tt>  <tt class="py-line">                      <tt class="py-string">"must_revalidate"</tt><tt class="py-op">:</tt> <tt class="py-name">True</tt> </tt>
+<a name="L75"></a><tt class="py-lineno"> 75</tt>  <tt class="py-line">                     <tt class="py-op">}</tt><tt class="py-op">,</tt> </tt>
+<a name="L76"></a><tt class="py-lineno"> 76</tt>  <tt class="py-line">             <tt class="py-string">".swf"</tt><tt class="py-op">:</tt> <tt class="py-op">{</tt><tt class="py-string">"max_age"</tt><tt class="py-op">:</tt> <tt id="link-18" class="py-name"><a title="levitas.middlewares.fileMiddleware.FileMiddleware.DAY_SEC" class="py-name" href="#" onclick="return doclink('link-18', 'DAY_SEC', 'link-9');">DAY_SEC</a></tt><tt class="py-op">,</tt> </tt>
+<a name="L77"></a><tt class="py-lineno"> 77</tt>  <tt class="py-line">                      <tt class="py-string">"must_revalidate"</tt><tt class="py-op">:</tt> <tt class="py-name">True</tt> </tt>
+<a name="L78"></a><tt class="py-lineno"> 78</tt>  <tt class="py-line">                     <tt class="py-op">}</tt><tt class="py-op">,</tt> </tt>
+<a name="L79"></a><tt class="py-lineno"> 79</tt>  <tt class="py-line">             <tt class="py-string">".js"</tt><tt class="py-op">:</tt> <tt class="py-op">{</tt><tt class="py-string">"max_age"</tt><tt class="py-op">:</tt> <tt id="link-19" class="py-name"><a title="levitas.middlewares.fileMiddleware.FileMiddleware.DAY_SEC" class="py-name" href="#" onclick="return doclink('link-19', 'DAY_SEC', 'link-9');">DAY_SEC</a></tt><tt class="py-op">,</tt> </tt>
+<a name="L80"></a><tt class="py-lineno"> 80</tt>  <tt class="py-line">                     <tt class="py-string">"must_revalidate"</tt><tt class="py-op">:</tt> <tt class="py-name">True</tt> </tt>
+<a name="L81"></a><tt class="py-lineno"> 81</tt>  <tt class="py-line">                    <tt class="py-op">}</tt><tt class="py-op">,</tt> </tt>
+<a name="L82"></a><tt class="py-lineno"> 82</tt>  <tt class="py-line">             <tt class="py-string">".css"</tt><tt class="py-op">:</tt> <tt class="py-op">{</tt><tt class="py-string">"max_age"</tt><tt class="py-op">:</tt> <tt id="link-20" class="py-name"><a title="levitas.middlewares.fileMiddleware.FileMiddleware.DAY_SEC" class="py-name" href="#" onclick="return doclink('link-20', 'DAY_SEC', 'link-9');">DAY_SEC</a></tt><tt class="py-op">,</tt> </tt>
+<a name="L83"></a><tt class="py-lineno"> 83</tt>  <tt class="py-line">                      <tt class="py-string">"must_revalidate"</tt><tt class="py-op">:</tt> <tt class="py-name">True</tt> </tt>
+<a name="L84"></a><tt class="py-lineno"> 84</tt>  <tt class="py-line">                     <tt class="py-op">}</tt><tt class="py-op">,</tt> </tt>
+<a name="L85"></a><tt class="py-lineno"> 85</tt>  <tt class="py-line">             <tt class="py-op">}</tt> </tt>
+<a name="L86"></a><tt class="py-lineno"> 86</tt>  <tt class="py-line">     </tt>
+<a name="FileMiddleware.__init__"></a><div id="FileMiddleware.__init__-def"><a name="L87"></a><tt class="py-lineno"> 87</tt> <a class="py-toggle" href="#" id="FileMiddleware.__init__-toggle" onclick="return toggle('FileMiddleware.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="levitas.middlewares.fileMiddleware.FileMiddleware-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">path</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="FileMiddleware.__init__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="FileMiddleware.__init__-expanded"><a name="L88"></a><tt class="py-lineno"> 88</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L89"></a><tt class="py-lineno"> 89</tt>  <tt class="py-line"><tt class="py-docstring">        @param path: Path of files to serve</tt> </tt>
+<a name="L90"></a><tt class="py-lineno"> 90</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L91"></a><tt class="py-lineno"> 91</tt>  <tt class="py-line">        <tt id="link-21" class="py-name"><a title="levitas.middleware.Middleware" class="py-name" href="#" onclick="return doclink('link-21', 'Middleware', 'link-4');">Middleware</a></tt><tt class="py-op">.</tt><tt id="link-22" class="py-name" targets="Method levitas.factory.MiddlewareFactory.__init__()=levitas.factory.MiddlewareFactory-class.html#__init__,Method levitas.handler.WSGIHandler.__init__()=levitas.handler.WSGIHandler-class.html#__init__,Method levitas.lib.daemonize.CLIOptions.__init__()=levitas.lib.daemonize.CLIOptions-class.html#__init__,Method levitas.lib.daemonize.Daemonizer.__init__()=levitas.lib.daemonize.Daemonizer-class.html#__init__,Method levitas.lib.dispatcher.Receiver.__init__()=levitas.lib.dispatcher.Receiver-class.html#__init__,Method levitas.lib.dispatcher.Signal.__init__()=levitas.lib.dispatcher.Signal-class.html#__init__,Method levitas.lib.secure_cookie.SecureCookie.__init__()=levitas.lib.secure_cookie.SecureCookie-class.html#__init__,Method levitas.lib.settings.Settings.__init__()=levitas.lib.settings.Settings-class.html#__init__,Method levitas.lib.winservice.CLIOptions.__init__()=levitas.lib.winservice.CLIOptions-class.html#__init__,Method levitas.lib.winservice.WinService.__init__()=levitas.lib.winservice.WinService-class.html#__init__,Method levitas.middleware.Middleware.__init__()=levitas.middleware.Middleware-class.html#__init__,Method levitas.middlewares.appMiddleware.AppMiddleware.__init__()=levitas.middlewares.appMiddleware.AppMiddleware-class.html#__init__,Method levitas.middlewares.dynSiteMiddleware.DynSiteMiddleware.__init__()=levitas.middlewares.dynSiteMiddleware.DynSiteMiddleware-class.html#__init__,Method levitas.middlewares.dynSiteMiddleware.PostFile.__init__()=levitas.middlewares.dynSiteMiddleware.PostFile-class.html#__init__,Method levitas.middlewares.fileMiddleware.FileMiddleware.__init__()=levitas.middlewares.fileMiddleware.FileMiddleware-class.html#__init__,Method levitas.middlewares.jsonMiddleware.JSONMiddleware.__init__()=levitas.middlewares.jsonMiddleware.JSONMiddleware-class.html#__init__,Method levitas.middlewares.jsonMiddleware.ServiceHandler.__init__()=levitas.middlewares.jsonMiddleware.ServiceHandler-class.html#__init__,Method levitas.middlewares.loggerMiddleware.LoggerMiddleware.__init__()=levitas.middlewares.loggerMiddleware.LoggerMiddleware-class.html#__init__,Method levitas.middlewares.redirectMiddleware.RedirectMiddleware.__init__()=levitas.middlewares.redirectMiddleware.RedirectMiddleware-class.html#__init__,Method levitas.middlewares.service.Service.__init__()=levitas.middlewares.service.Service-class.html#__init__,Method levitas.server.baseServer.BaseServer.__init__()=levitas.server.baseServer.BaseServer-class.html#__init__"><a title="levitas.factory.MiddlewareFactory.__init__
+levitas.handler.WSGIHandler.__init__
+levitas.lib.daemonize.CLIOptions.__init__
+levitas.lib.daemonize.Daemonizer.__init__
+levitas.lib.dispatcher.Receiver.__init__
+levitas.lib.dispatcher.Signal.__init__
+levitas.lib.secure_cookie.SecureCookie.__init__
+levitas.lib.settings.Settings.__init__
+levitas.lib.winservice.CLIOptions.__init__
+levitas.lib.winservice.WinService.__init__
+levitas.middleware.Middleware.__init__
+levitas.middlewares.appMiddleware.AppMiddleware.__init__
+levitas.middlewares.dynSiteMiddleware.DynSiteMiddleware.__init__
+levitas.middlewares.dynSiteMiddleware.PostFile.__init__
+levitas.middlewares.fileMiddleware.FileMiddleware.__init__
+levitas.middlewares.jsonMiddleware.JSONMiddleware.__init__
+levitas.middlewares.jsonMiddleware.ServiceHandler.__init__
+levitas.middlewares.loggerMiddleware.LoggerMiddleware.__init__
+levitas.middlewares.redirectMiddleware.RedirectMiddleware.__init__
+levitas.middlewares.service.Service.__init__
+levitas.server.baseServer.BaseServer.__init__" class="py-name" href="#" onclick="return doclink('link-22', '__init__', 'link-22');">__init__</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">)</tt> </tt>
+<a name="L92"></a><tt class="py-lineno"> 92</tt>  <tt class="py-line">        <tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">chdir</tt><tt class="py-op">(</tt><tt class="py-name">path</tt><tt class="py-op">)</tt> </tt>
+<a name="L93"></a><tt class="py-lineno"> 93</tt>  <tt class="py-line">        <tt id="link-23" class="py-name"><a title="levitas.factory.log
+levitas.handler.log
+levitas.lib.daemonize.log
+levitas.lib.levitasFieldStorage.log
+levitas.lib.secure_cookie.log
+levitas.lib.settings.log
+levitas.lib.singleton.log
+levitas.lib.winservice.WinService.log
+levitas.middleware.log
+levitas.middlewares.appMiddleware.log
+levitas.middlewares.dynSiteMiddleware.log
+levitas.middlewares.fileMiddleware.log
+levitas.middlewares.jsonMiddleware.log
+levitas.middlewares.loggerMiddleware.log
+levitas.middlewares.redirectMiddleware.log
+levitas.server.cherrypyServer.log
+levitas.server.eventletServer.log
+levitas.server.testServer.log" class="py-name" href="#" onclick="return doclink('link-23', 'log', 'link-5');">log</a></tt><tt class="py-op">.</tt><tt class="py-name">debug</tt><tt class="py-op">(</tt><tt class="py-string">"Working directory: %s"</tt> <tt class="py-op">%</tt> <tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">getcwd</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L94"></a><tt class="py-lineno"> 94</tt>  <tt class="py-line">         </tt>
+<a name="L95"></a><tt class="py-lineno"> 95</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">static_path</tt> <tt class="py-op">=</tt> <tt class="py-name">path</tt> </tt>
+<a name="L96"></a><tt class="py-lineno"> 96</tt>  <tt class="py-line">        <tt class="py-string">"""</tt> </tt>
+<a name="L97"></a><tt class="py-lineno"> 97</tt>  <tt class="py-line"><tt class="py-string">        Path to the static files</tt> </tt>
+<a name="L98"></a><tt class="py-lineno"> 98</tt>  <tt class="py-line"><tt class="py-string">        """</tt> </tt>
+<a name="L99"></a><tt class="py-lineno"> 99</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">ctype</tt> <tt class="py-op">=</tt> <tt class="py-string">""</tt> </tt>
+<a name="L100"></a><tt class="py-lineno">100</tt>  <tt class="py-line">        <tt class="py-string">""" The content-type of the file"""</tt> </tt>
+<a name="L101"></a><tt class="py-lineno">101</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">size</tt> <tt class="py-op">=</tt> <tt class="py-number">0</tt> </tt>
+<a name="L102"></a><tt class="py-lineno">102</tt>  <tt class="py-line">        <tt class="py-string">""" file-size """</tt> </tt>
+<a name="L103"></a><tt class="py-lineno">103</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">fpath</tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt> </tt>
+<a name="L104"></a><tt class="py-lineno">104</tt>  <tt class="py-line">        <tt class="py-string">""" absolute path of the file"""</tt> </tt>
+<a name="L105"></a><tt class="py-lineno">105</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">hasattr</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-24" class="py-name" targets="Module levitas.lib.settings=levitas.lib.settings-module.html"><a title="levitas.lib.settings" class="py-name" href="#" onclick="return doclink('link-24', 'settings', 'link-24');">settings</a></tt><tt class="py-op">,</tt> <tt class="py-string">"filecache"</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L106"></a><tt class="py-lineno">106</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">cache</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-25" class="py-name"><a title="levitas.lib.settings" class="py-name" href="#" onclick="return doclink('link-25', 'settings', 'link-24');">settings</a></tt><tt class="py-op">.</tt><tt class="py-name">filecache</tt> </tt>
+<a name="L107"></a><tt class="py-lineno">107</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L108"></a><tt class="py-lineno">108</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">cache</tt> <tt class="py-op">=</tt> <tt id="link-26" class="py-name" targets="Class levitas.middlewares.fileMiddleware.FileMiddleware=levitas.middlewares.fileMiddleware.FileMiddleware-class.html"><a title="levitas.middlewares.fileMiddleware.FileMiddleware" class="py-name" href="#" onclick="return doclink('link-26', 'FileMiddleware', 'link-26');">FileMiddleware</a></tt><tt class="py-op">.</tt><tt id="link-27" class="py-name"><a title="levitas.middlewares.fileMiddleware.FileMiddleware.CACHE" class="py-name" href="#" onclick="return doclink('link-27', 'CACHE', 'link-10');">CACHE</a></tt> </tt>
+</div><a name="L109"></a><tt class="py-lineno">109</tt>  <tt class="py-line">         </tt>
+<a name="FileMiddleware.prepare"></a><div id="FileMiddleware.prepare-def"><a name="L110"></a><tt class="py-lineno">110</tt> <a class="py-toggle" href="#" id="FileMiddleware.prepare-toggle" onclick="return toggle('FileMiddleware.prepare');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="levitas.middlewares.fileMiddleware.FileMiddleware-class.html#prepare">prepare</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="FileMiddleware.prepare-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="FileMiddleware.prepare-expanded"><a name="L111"></a><tt class="py-lineno">111</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-28" class="py-name" targets="Method levitas.middlewares.fileMiddleware.FileMiddleware.preparePath()=levitas.middlewares.fileMiddleware.FileMiddleware-class.html#preparePath"><a title="levitas.middlewares.fileMiddleware.FileMiddleware.preparePath" class="py-name" href="#" onclick="return doclink('link-28', 'preparePath', 'link-28');">preparePath</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L112"></a><tt class="py-lineno">112</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-29" class="py-name" targets="Method levitas.middlewares.fileMiddleware.FileMiddleware.prepareFile()=levitas.middlewares.fileMiddleware.FileMiddleware-class.html#prepareFile"><a title="levitas.middlewares.fileMiddleware.FileMiddleware.prepareFile" class="py-name" href="#" onclick="return doclink('link-29', 'prepareFile', 'link-29');">prepareFile</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L113"></a><tt class="py-lineno">113</tt>  <tt class="py-line">     </tt>
+<a name="FileMiddleware.preparePath"></a><div id="FileMiddleware.preparePath-def"><a name="L114"></a><tt class="py-lineno">114</tt> <a class="py-toggle" href="#" id="FileMiddleware.preparePath-toggle" onclick="return toggle('FileMiddleware.preparePath');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="levitas.middlewares.fileMiddleware.FileMiddleware-class.html#preparePath">preparePath</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="FileMiddleware.preparePath-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="FileMiddleware.preparePath-expanded"><a name="L115"></a><tt class="py-lineno">115</tt>  <tt class="py-line">        <tt class="py-docstring">""" set the path in the filesystem """</tt> </tt>
+<a name="L116"></a><tt class="py-lineno">116</tt>  <tt class="py-line">        <tt class="py-name">groups</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-30" class="py-name" targets="Method levitas.middleware.Middleware.url_groups()=levitas.middleware.Middleware-class.html#url_groups"><a title="levitas.middleware.Middleware.url_groups" class="py-name" href="#" onclick="return doclink('link-30', 'url_groups', 'link-30');">url_groups</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L117"></a><tt class="py-lineno">117</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name">groups</tt><tt class="py-op">)</tt> <tt class="py-op">!=</tt> <tt class="py-number">1</tt><tt class="py-op">:</tt> </tt>
+<a name="L118"></a><tt class="py-lineno">118</tt>  <tt class="py-line">            <tt id="link-31" class="py-name"><a title="levitas.factory.log
+levitas.handler.log
+levitas.lib.daemonize.log
+levitas.lib.levitasFieldStorage.log
+levitas.lib.secure_cookie.log
+levitas.lib.settings.log
+levitas.lib.singleton.log
+levitas.lib.winservice.WinService.log
+levitas.middleware.log
+levitas.middlewares.appMiddleware.log
+levitas.middlewares.dynSiteMiddleware.log
+levitas.middlewares.fileMiddleware.log
+levitas.middlewares.jsonMiddleware.log
+levitas.middlewares.loggerMiddleware.log
+levitas.middlewares.redirectMiddleware.log
+levitas.server.cherrypyServer.log
+levitas.server.eventletServer.log
+levitas.server.testServer.log" class="py-name" href="#" onclick="return doclink('link-31', 'log', 'link-5');">log</a></tt><tt class="py-op">.</tt><tt class="py-name">error</tt><tt class="py-op">(</tt><tt class="py-string">"There must be only one regex group defined."</tt><tt class="py-op">)</tt> </tt>
+<a name="L119"></a><tt class="py-lineno">119</tt>  <tt class="py-line">            <tt class="py-keyword">raise</tt> </tt>
+<a name="L120"></a><tt class="py-lineno">120</tt>  <tt class="py-line">        <tt class="py-name">path</tt> <tt class="py-op">=</tt> <tt class="py-name">groups</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt> </tt>
+<a name="L121"></a><tt class="py-lineno">121</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">fpath</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-32" class="py-name" targets="Method levitas.middlewares.fileMiddleware.FileMiddleware.translate_path()=levitas.middlewares.fileMiddleware.FileMiddleware-class.html#translate_path"><a title="levitas.middlewares.fileMiddleware.FileMiddleware.translate_path" class="py-name" href="#" onclick="return doclink('link-32', 'translate_path', 'link-32');">translate_path</a></tt><tt class="py-op">(</tt><tt class="py-name">path</tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">static_path</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L122"></a><tt class="py-lineno">122</tt>  <tt class="py-line">     </tt>
+<a name="FileMiddleware.prepareFile"></a><div id="FileMiddleware.prepareFile-def"><a name="L123"></a><tt class="py-lineno">123</tt> <a class="py-toggle" href="#" id="FileMiddleware.prepareFile-toggle" onclick="return toggle('FileMiddleware.prepareFile');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="levitas.middlewares.fileMiddleware.FileMiddleware-class.html#prepareFile">prepareFile</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="FileMiddleware.prepareFile-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="FileMiddleware.prepareFile-expanded"><a name="L124"></a><tt class="py-lineno">124</tt>  <tt class="py-line">        <tt class="py-docstring">""" set the content-type and the file-size """</tt> </tt>
+<a name="L125"></a><tt class="py-lineno">125</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">fpath</tt><tt class="py-op">:</tt> </tt>
+<a name="L126"></a><tt class="py-lineno">126</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">ctype</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-33" class="py-name" targets="Method levitas.middlewares.fileMiddleware.FileMiddleware.guess_type()=levitas.middlewares.fileMiddleware.FileMiddleware-class.html#guess_type"><a title="levitas.middlewares.fileMiddleware.FileMiddleware.guess_type" class="py-name" href="#" onclick="return doclink('link-33', 'guess_type', 'link-33');">guess_type</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">fpath</tt><tt class="py-op">)</tt> </tt>
+<a name="L127"></a><tt class="py-lineno">127</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">path</tt><tt class="py-op">.</tt><tt class="py-name">exists</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">fpath</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L128"></a><tt class="py-lineno">128</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">size</tt> <tt class="py-op">=</tt> <tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">stat</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">fpath</tt><tt class="py-op">)</tt><tt class="py-op">[</tt><tt class="py-name">stat</tt><tt class="py-op">.</tt><tt class="py-name">ST_SIZE</tt><tt class="py-op">]</tt> </tt>
+<a name="L129"></a><tt class="py-lineno">129</tt>  <tt class="py-line">            <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L130"></a><tt class="py-lineno">130</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">size</tt> <tt class="py-op">=</tt> <tt class="py-number">0</tt> </tt>
+</div><a name="L131"></a><tt class="py-lineno">131</tt>  <tt class="py-line">                 </tt>
+<a name="FileMiddleware.response_file"></a><div id="FileMiddleware.response_file-def"><a name="L132"></a><tt class="py-lineno">132</tt> <a class="py-toggle" href="#" id="FileMiddleware.response_file-toggle" onclick="return toggle('FileMiddleware.response_file');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="levitas.middlewares.fileMiddleware.FileMiddleware-class.html#response_file">response_file</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="FileMiddleware.response_file-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="FileMiddleware.response_file-expanded"><a name="L133"></a><tt class="py-lineno">133</tt>  <tt class="py-line">        <tt class="py-name">f</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-34" class="py-name" targets="Method levitas.middlewares.fileMiddleware.FileMiddleware.getFile()=levitas.middlewares.fileMiddleware.FileMiddleware-class.html#getFile"><a title="levitas.middlewares.fileMiddleware.FileMiddleware.getFile" class="py-name" href="#" onclick="return doclink('link-34', 'getFile', 'link-34');">getFile</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">fpath</tt><tt class="py-op">)</tt> </tt>
+<a name="L134"></a><tt class="py-lineno">134</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">f</tt> <tt class="py-keyword">is</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L135"></a><tt class="py-lineno">135</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-35" class="py-name" targets="Method levitas.middleware.Middleware.responseError()=levitas.middleware.Middleware-class.html#responseError"><a title="levitas.middleware.Middleware.responseError" class="py-name" href="#" onclick="return doclink('link-35', 'responseError', 'link-35');">responseError</a></tt><tt class="py-op">(</tt><tt class="py-number">404</tt><tt class="py-op">)</tt> </tt>
+<a name="L136"></a><tt class="py-lineno">136</tt>  <tt class="py-line">         </tt>
+<a name="L137"></a><tt class="py-lineno">137</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-36" class="py-name" targets="Method levitas.middlewares.fileMiddleware.FileMiddleware.prepareCacheHeaders()=levitas.middlewares.fileMiddleware.FileMiddleware-class.html#prepareCacheHeaders"><a title="levitas.middlewares.fileMiddleware.FileMiddleware.prepareCacheHeaders" class="py-name" href="#" onclick="return doclink('link-36', 'prepareCacheHeaders', 'link-36');">prepareCacheHeaders</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L138"></a><tt class="py-lineno">138</tt>  <tt class="py-line">         </tt>
+<a name="L139"></a><tt class="py-lineno">139</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-37" class="py-name" targets="Method levitas.middlewares.fileMiddleware.FileMiddleware.checkCacheInfo()=levitas.middlewares.fileMiddleware.FileMiddleware-class.html#checkCacheInfo"><a title="levitas.middlewares.fileMiddleware.FileMiddleware.checkCacheInfo" class="py-name" href="#" onclick="return doclink('link-37', 'checkCacheInfo', 'link-37');">checkCacheInfo</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">fpath</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L140"></a><tt class="py-lineno">140</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">response_code</tt> <tt class="py-op">=</tt> <tt class="py-number">304</tt> </tt>
+<a name="L141"></a><tt class="py-lineno">141</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> </tt>
+<a name="L142"></a><tt class="py-lineno">142</tt>  <tt class="py-line">         </tt>
+<a name="L143"></a><tt class="py-lineno">143</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-38" class="py-name" targets="Method levitas.middleware.Middleware.addHeader()=levitas.middleware.Middleware-class.html#addHeader"><a title="levitas.middleware.Middleware.addHeader" class="py-name" href="#" onclick="return doclink('link-38', 'addHeader', 'link-38');">addHeader</a></tt><tt class="py-op">(</tt><tt class="py-string">"Content-type"</tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">ctype</tt><tt class="py-op">)</tt> </tt>
+<a name="L144"></a><tt class="py-lineno">144</tt>  <tt class="py-line">          </tt>
+<a name="L145"></a><tt class="py-lineno">145</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-39" class="py-name"><a title="levitas.middleware.Middleware.addHeader" class="py-name" href="#" onclick="return doclink('link-39', 'addHeader', 'link-38');">addHeader</a></tt><tt class="py-op">(</tt><tt class="py-string">"Content-Length"</tt><tt class="py-op">,</tt> <tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">size</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L146"></a><tt class="py-lineno">146</tt>  <tt class="py-line"> </tt>
+<a name="L147"></a><tt class="py-lineno">147</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">f</tt> </tt>
+</div><a name="L148"></a><tt class="py-lineno">148</tt>  <tt class="py-line">         </tt>
+<a name="FileMiddleware.get"></a><div id="FileMiddleware.get-def"><a name="L149"></a><tt class="py-lineno">149</tt> <a class="py-toggle" href="#" id="FileMiddleware.get-toggle" onclick="return toggle('FileMiddleware.get');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="levitas.middlewares.fileMiddleware.FileMiddleware-class.html#get">get</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="FileMiddleware.get-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="FileMiddleware.get-expanded"><a name="L150"></a><tt class="py-lineno">150</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-40" class="py-name" targets="Method levitas.middlewares.fileMiddleware.FileMiddleware.response_file()=levitas.middlewares.fileMiddleware.FileMiddleware-class.html#response_file"><a title="levitas.middlewares.fileMiddleware.FileMiddleware.response_file" class="py-name" href="#" onclick="return doclink('link-40', 'response_file', 'link-40');">response_file</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L151"></a><tt class="py-lineno">151</tt>  <tt class="py-line">         </tt>
+<a name="FileMiddleware.head"></a><div id="FileMiddleware.head-def"><a name="L152"></a><tt class="py-lineno">152</tt> <a class="py-toggle" href="#" id="FileMiddleware.head-toggle" onclick="return toggle('FileMiddleware.head');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="levitas.middlewares.fileMiddleware.FileMiddleware-class.html#head">head</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="FileMiddleware.head-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="FileMiddleware.head-expanded"><a name="L153"></a><tt class="py-lineno">153</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-41" class="py-name" targets="Method levitas.middleware.Middleware.get()=levitas.middleware.Middleware-class.html#get,Method levitas.middlewares.appMiddleware.AppMiddleware.get()=levitas.middlewares.appMiddleware.AppMiddleware-class.html#get,Method levitas.middlewares.dynSiteMiddleware.DynSiteMiddleware.get()=levitas.middlewares.dynSiteMiddleware.DynSiteMiddleware-class.html#get,Method levitas.middlewares.fileMiddleware.FileMiddleware.get()=levitas.middlewares.fileMiddleware.FileMiddleware-class.html#get,Method levitas.middlewares.loggerMiddleware.LoggerMiddleware.get()=levitas.middlewares.loggerMiddleware.LoggerMiddleware-class.html#get,Method levitas.middlewares.redirectMiddleware.RedirectMiddleware.get()=levitas.middlewares.redirectMiddleware.RedirectMiddleware-class.html#get"><a title="levitas.middleware.Middleware.get
+levitas.middlewares.appMiddleware.AppMiddleware.get
+levitas.middlewares.dynSiteMiddleware.DynSiteMiddleware.get
+levitas.middlewares.fileMiddleware.FileMiddleware.get
+levitas.middlewares.loggerMiddleware.LoggerMiddleware.get
+levitas.middlewares.redirectMiddleware.RedirectMiddleware.get" class="py-name" href="#" onclick="return doclink('link-41', 'get', 'link-41');">get</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L154"></a><tt class="py-lineno">154</tt>  <tt class="py-line">         </tt>
+<a name="FileMiddleware.getFile"></a><div id="FileMiddleware.getFile-def"><a name="L155"></a><tt class="py-lineno">155</tt> <a class="py-toggle" href="#" id="FileMiddleware.getFile-toggle" onclick="return toggle('FileMiddleware.getFile');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="levitas.middlewares.fileMiddleware.FileMiddleware-class.html#getFile">getFile</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">path</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="FileMiddleware.getFile-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="FileMiddleware.getFile-expanded"><a name="L156"></a><tt class="py-lineno">156</tt>  <tt class="py-line">        <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L157"></a><tt class="py-lineno">157</tt>  <tt class="py-line">            <tt class="py-name">f</tt> <tt class="py-op">=</tt> <tt class="py-name">open</tt><tt class="py-op">(</tt><tt class="py-name">path</tt><tt class="py-op">,</tt> <tt class="py-string">"r+b"</tt><tt class="py-op">)</tt> </tt>
+<a name="L158"></a><tt class="py-lineno">158</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-name">f</tt> </tt>
+<a name="L159"></a><tt class="py-lineno">159</tt>  <tt class="py-line">        <tt class="py-keyword">except</tt> <tt class="py-name">IOError</tt> <tt class="py-keyword">as</tt> <tt class="py-name">e</tt><tt class="py-op">:</tt> </tt>
+<a name="L160"></a><tt class="py-lineno">160</tt>  <tt class="py-line">            <tt id="link-42" class="py-name"><a title="levitas.factory.log
+levitas.handler.log
+levitas.lib.daemonize.log
+levitas.lib.levitasFieldStorage.log
+levitas.lib.secure_cookie.log
+levitas.lib.settings.log
+levitas.lib.singleton.log
+levitas.lib.winservice.WinService.log
+levitas.middleware.log
+levitas.middlewares.appMiddleware.log
+levitas.middlewares.dynSiteMiddleware.log
+levitas.middlewares.fileMiddleware.log
+levitas.middlewares.jsonMiddleware.log
+levitas.middlewares.loggerMiddleware.log
+levitas.middlewares.redirectMiddleware.log
+levitas.server.cherrypyServer.log
+levitas.server.eventletServer.log
+levitas.server.testServer.log" class="py-name" href="#" onclick="return doclink('link-42', 'log', 'link-5');">log</a></tt><tt class="py-op">.</tt><tt class="py-name">debug</tt><tt class="py-op">(</tt><tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name">e</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L161"></a><tt class="py-lineno">161</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-name">None</tt> </tt>
+</div><a name="L162"></a><tt class="py-lineno">162</tt>  <tt class="py-line">         </tt>
+<a name="FileMiddleware.checkCacheInfo"></a><div id="FileMiddleware.checkCacheInfo-def"><a name="L163"></a><tt class="py-lineno">163</tt> <a class="py-toggle" href="#" id="FileMiddleware.checkCacheInfo-toggle" onclick="return toggle('FileMiddleware.checkCacheInfo');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="levitas.middlewares.fileMiddleware.FileMiddleware-class.html#checkCacheInfo">checkCacheInfo</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">path</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="FileMiddleware.checkCacheInfo-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="FileMiddleware.checkCacheInfo-expanded"><a name="L164"></a><tt class="py-lineno">164</tt>  <tt class="py-line">        <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L165"></a><tt class="py-lineno">165</tt>  <tt class="py-line">            <tt class="py-name">mtime</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-43" class="py-name" targets="Method levitas.middlewares.fileMiddleware.FileMiddleware.get_mtime()=levitas.middlewares.fileMiddleware.FileMiddleware-class.html#get_mtime"><a title="levitas.middlewares.fileMiddleware.FileMiddleware.get_mtime" class="py-name" href="#" onclick="return doclink('link-43', 'get_mtime', 'link-43');">get_mtime</a></tt><tt class="py-op">(</tt><tt class="py-name">path</tt><tt class="py-op">)</tt> </tt>
+<a name="L166"></a><tt class="py-lineno">166</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-string">"HTTP_IF_MODIFIED_SINCE"</tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">request_headers</tt><tt class="py-op">:</tt> </tt>
+<a name="L167"></a><tt class="py-lineno">167</tt>  <tt class="py-line">                <tt class="py-name">if_modified_since</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">request_headers</tt><tt class="py-op">[</tt><tt class="py-string">"HTTP_IF_MODIFIED_SINCE"</tt><tt class="py-op">]</tt> </tt>
+<a name="L168"></a><tt class="py-lineno">168</tt>  <tt class="py-line">                <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L169"></a><tt class="py-lineno">169</tt>  <tt class="py-line">                    <tt class="py-name">if_modified_since</tt> <tt class="py-op">=</tt> <tt class="py-name">http2time</tt><tt class="py-op">(</tt><tt class="py-name">if_modified_since</tt><tt class="py-op">)</tt> </tt>
+<a name="L170"></a><tt class="py-lineno">170</tt>  <tt class="py-line">                <tt class="py-keyword">except</tt> <tt class="py-name">Exception</tt> <tt class="py-keyword">as</tt> <tt class="py-name">err</tt><tt class="py-op">:</tt> </tt>
+<a name="L171"></a><tt class="py-lineno">171</tt>  <tt class="py-line">                    <tt id="link-44" class="py-name"><a title="levitas.factory.log
+levitas.handler.log
+levitas.lib.daemonize.log
+levitas.lib.levitasFieldStorage.log
+levitas.lib.secure_cookie.log
+levitas.lib.settings.log
+levitas.lib.singleton.log
+levitas.lib.winservice.WinService.log
+levitas.middleware.log
+levitas.middlewares.appMiddleware.log
+levitas.middlewares.dynSiteMiddleware.log
+levitas.middlewares.fileMiddleware.log
+levitas.middlewares.jsonMiddleware.log
+levitas.middlewares.loggerMiddleware.log
+levitas.middlewares.redirectMiddleware.log
+levitas.server.cherrypyServer.log
+levitas.server.eventletServer.log
+levitas.server.testServer.log" class="py-name" href="#" onclick="return doclink('link-44', 'log', 'link-5');">log</a></tt><tt class="py-op">.</tt><tt class="py-name">error</tt><tt class="py-op">(</tt><tt class="py-name">err</tt><tt class="py-op">)</tt> </tt>
+<a name="L172"></a><tt class="py-lineno">172</tt>  <tt class="py-line">                    <tt class="py-keyword">return</tt> <tt class="py-name">False</tt> </tt>
+<a name="L173"></a><tt class="py-lineno">173</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt class="py-name">int</tt><tt class="py-op">(</tt><tt class="py-name">mtime</tt><tt class="py-op">)</tt> <tt class="py-op">&gt;</tt> <tt class="py-name">int</tt><tt class="py-op">(</tt><tt class="py-name">if_modified_since</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L174"></a><tt class="py-lineno">174</tt>  <tt class="py-line">                    <tt class="py-keyword">return</tt> <tt class="py-name">False</tt> </tt>
+<a name="L175"></a><tt class="py-lineno">175</tt>  <tt class="py-line">                <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L176"></a><tt class="py-lineno">176</tt>  <tt class="py-line">                    <tt class="py-keyword">return</tt> <tt class="py-name">True</tt> </tt>
+<a name="L177"></a><tt class="py-lineno">177</tt>  <tt class="py-line">            <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L178"></a><tt class="py-lineno">178</tt>  <tt class="py-line">                <tt class="py-keyword">return</tt> <tt class="py-name">False</tt> </tt>
+<a name="L179"></a><tt class="py-lineno">179</tt>  <tt class="py-line">        <tt class="py-keyword">except</tt> <tt class="py-name">Exception</tt> <tt class="py-keyword">as</tt> <tt class="py-name">err</tt><tt class="py-op">:</tt> </tt>
+<a name="L180"></a><tt class="py-lineno">180</tt>  <tt class="py-line">            <tt id="link-45" class="py-name"><a title="levitas.factory.log
+levitas.handler.log
+levitas.lib.daemonize.log
+levitas.lib.levitasFieldStorage.log
+levitas.lib.secure_cookie.log
+levitas.lib.settings.log
+levitas.lib.singleton.log
+levitas.lib.winservice.WinService.log
+levitas.middleware.log
+levitas.middlewares.appMiddleware.log
+levitas.middlewares.dynSiteMiddleware.log
+levitas.middlewares.fileMiddleware.log
+levitas.middlewares.jsonMiddleware.log
+levitas.middlewares.loggerMiddleware.log
+levitas.middlewares.redirectMiddleware.log
+levitas.server.cherrypyServer.log
+levitas.server.eventletServer.log
+levitas.server.testServer.log" class="py-name" href="#" onclick="return doclink('link-45', 'log', 'link-5');">log</a></tt><tt class="py-op">.</tt><tt class="py-name">error</tt><tt class="py-op">(</tt><tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name">err</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">exc_info</tt><tt class="py-op">=</tt><tt class="py-name">True</tt><tt class="py-op">)</tt> </tt>
+<a name="L181"></a><tt class="py-lineno">181</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-name">False</tt> </tt>
+</div><a name="L182"></a><tt class="py-lineno">182</tt>  <tt class="py-line">         </tt>
+<a name="FileMiddleware.prepareCacheHeaders"></a><div id="FileMiddleware.prepareCacheHeaders-def"><a name="L183"></a><tt class="py-lineno">183</tt> <a class="py-toggle" href="#" id="FileMiddleware.prepareCacheHeaders-toggle" onclick="return toggle('FileMiddleware.prepareCacheHeaders');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="levitas.middlewares.fileMiddleware.FileMiddleware-class.html#prepareCacheHeaders">prepareCacheHeaders</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="FileMiddleware.prepareCacheHeaders-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="FileMiddleware.prepareCacheHeaders-expanded"><a name="L184"></a><tt class="py-lineno">184</tt>  <tt class="py-line">        <tt class="py-name">ext</tt> <tt class="py-op">=</tt> <tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">path</tt><tt class="py-op">.</tt><tt class="py-name">splitext</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">fpath</tt><tt class="py-op">)</tt><tt class="py-op">[</tt><tt class="py-number">1</tt><tt class="py-op">]</tt><tt class="py-op">.</tt><tt class="py-name">lower</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L185"></a><tt class="py-lineno">185</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">ext</tt> <tt class="py-keyword">in</tt> <tt class="py-name">list</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">cache</tt><tt class="py-op">.</tt><tt class="py-name">keys</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L186"></a><tt class="py-lineno">186</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-46" class="py-name" targets="Method levitas.middlewares.fileMiddleware.FileMiddleware.setCacheHeaders()=levitas.middlewares.fileMiddleware.FileMiddleware-class.html#setCacheHeaders"><a title="levitas.middlewares.fileMiddleware.FileMiddleware.setCacheHeaders" class="py-name" href="#" onclick="return doclink('link-46', 'setCacheHeaders', 'link-46');">setCacheHeaders</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">fpath</tt><tt class="py-op">,</tt> <tt class="py-op">**</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">cache</tt><tt class="py-op">[</tt><tt class="py-name">ext</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L187"></a><tt class="py-lineno">187</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L188"></a><tt class="py-lineno">188</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-47" class="py-name"><a title="levitas.middlewares.fileMiddleware.FileMiddleware.setCacheHeaders" class="py-name" href="#" onclick="return doclink('link-47', 'setCacheHeaders', 'link-46');">setCacheHeaders</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">fpath</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L189"></a><tt class="py-lineno">189</tt>  <tt class="py-line">         </tt>
+<a name="FileMiddleware.setCacheHeaders"></a><div id="FileMiddleware.setCacheHeaders-def"><a name="L190"></a><tt class="py-lineno">190</tt> <a class="py-toggle" href="#" id="FileMiddleware.setCacheHeaders-toggle" onclick="return toggle('FileMiddleware.setCacheHeaders');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="levitas.middlewares.fileMiddleware.FileMiddleware-class.html#setCacheHeaders">setCacheHeaders</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">path</tt><tt class="py-op">,</tt> <tt class="py-param">no_cache</tt><tt class="py-op">=</tt><tt class="py-name">False</tt><tt class="py-op">,</tt> <tt class="py-param">no_store</tt><tt class="py-op">=</tt><tt class="py-name">False</tt><tt class="py-op">,</tt> </tt>
+<a name="L191"></a><tt class="py-lineno">191</tt>  <tt class="py-line">                        <tt class="py-param">max_age</tt><tt class="py-op">=</tt><tt class="py-number">0</tt><tt class="py-op">,</tt> <tt class="py-param">must_revalidate</tt><tt class="py-op">=</tt><tt class="py-name">False</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="FileMiddleware.setCacheHeaders-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="FileMiddleware.setCacheHeaders-expanded"><a name="L192"></a><tt class="py-lineno">192</tt>  <tt class="py-line">        <tt class="py-name">t</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-48" class="py-name"><a title="levitas.middlewares.fileMiddleware.FileMiddleware.get_mtime" class="py-name" href="#" onclick="return doclink('link-48', 'get_mtime', 'link-43');">get_mtime</a></tt><tt class="py-op">(</tt><tt class="py-name">path</tt><tt class="py-op">)</tt> </tt>
+<a name="L193"></a><tt class="py-lineno">193</tt>  <tt class="py-line">        <tt class="py-name">last_modified</tt> <tt class="py-op">=</tt> <tt id="link-49" class="py-name"><a title="levitas.lib.utils" class="py-name" href="#" onclick="return doclink('link-49', 'utils', 'link-2');">utils</a></tt><tt class="py-op">.</tt><tt id="link-50" class="py-name" targets="Function levitas.lib.utils.time2netscape()=levitas.lib.utils-module.html#time2netscape"><a title="levitas.lib.utils.time2netscape" class="py-name" href="#" onclick="return doclink('link-50', 'time2netscape', 'link-50');">time2netscape</a></tt><tt class="py-op">(</tt><tt class="py-name">t</tt><tt class="py-op">)</tt> </tt>
+<a name="L194"></a><tt class="py-lineno">194</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-51" class="py-name"><a title="levitas.middleware.Middleware.addHeader" class="py-name" href="#" onclick="return doclink('link-51', 'addHeader', 'link-38');">addHeader</a></tt><tt class="py-op">(</tt><tt class="py-string">"Last-Modified"</tt><tt class="py-op">,</tt> <tt class="py-name">last_modified</tt><tt class="py-op">)</tt> </tt>
+<a name="L195"></a><tt class="py-lineno">195</tt>  <tt class="py-line">        <tt class="py-comment">#expires = asctime(gmtime(time() + expires_secs))</tt> </tt>
+<a name="L196"></a><tt class="py-lineno">196</tt>  <tt class="py-line">        <tt class="py-comment">#self.addHeader("Expires", expires)</tt> </tt>
+<a name="L197"></a><tt class="py-lineno">197</tt>  <tt class="py-line">         </tt>
+<a name="L198"></a><tt class="py-lineno">198</tt>  <tt class="py-line">        <tt class="py-name">cache_control</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-op">]</tt> </tt>
+<a name="L199"></a><tt class="py-lineno">199</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">no_cache</tt><tt class="py-op">:</tt> </tt>
+<a name="L200"></a><tt class="py-lineno">200</tt>  <tt class="py-line">            <tt class="py-name">cache_control</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-string">"no-cache"</tt><tt class="py-op">)</tt> </tt>
+<a name="L201"></a><tt class="py-lineno">201</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">no_store</tt><tt class="py-op">:</tt> </tt>
+<a name="L202"></a><tt class="py-lineno">202</tt>  <tt class="py-line">            <tt class="py-name">cache_control</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-string">"no-store"</tt><tt class="py-op">)</tt> </tt>
+<a name="L203"></a><tt class="py-lineno">203</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">max_age</tt><tt class="py-op">:</tt> </tt>
+<a name="L204"></a><tt class="py-lineno">204</tt>  <tt class="py-line">            <tt class="py-name">cache_control</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-string">"max-age=%d"</tt> <tt class="py-op">%</tt> <tt class="py-name">max_age</tt><tt class="py-op">)</tt> </tt>
+<a name="L205"></a><tt class="py-lineno">205</tt>  <tt class="py-line">            <tt class="py-comment">#cache_control += ", s-max-age=%d" % max_age</tt> </tt>
+<a name="L206"></a><tt class="py-lineno">206</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">must_revalidate</tt><tt class="py-op">:</tt> </tt>
+<a name="L207"></a><tt class="py-lineno">207</tt>  <tt class="py-line">            <tt class="py-name">cache_control</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-string">"must-revalidate"</tt><tt class="py-op">)</tt> </tt>
+<a name="L208"></a><tt class="py-lineno">208</tt>  <tt class="py-line">             </tt>
+<a name="L209"></a><tt class="py-lineno">209</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name">cache_control</tt><tt class="py-op">:</tt> </tt>
+<a name="L210"></a><tt class="py-lineno">210</tt>  <tt class="py-line">            <tt class="py-name">cache_control</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-string">"no-cache"</tt><tt class="py-op">)</tt> </tt>
+<a name="L211"></a><tt class="py-lineno">211</tt>  <tt class="py-line">            <tt class="py-name">cache_control</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-string">"must-revalidate"</tt><tt class="py-op">)</tt> </tt>
+<a name="L212"></a><tt class="py-lineno">212</tt>  <tt class="py-line">            <tt class="py-comment">#cache_control.append("no-store")</tt> </tt>
+<a name="L213"></a><tt class="py-lineno">213</tt>  <tt class="py-line">             </tt>
+<a name="L214"></a><tt class="py-lineno">214</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-52" class="py-name"><a title="levitas.middleware.Middleware.addHeader" class="py-name" href="#" onclick="return doclink('link-52', 'addHeader', 'link-38');">addHeader</a></tt><tt class="py-op">(</tt><tt class="py-string">"Cache-Control"</tt><tt class="py-op">,</tt> <tt class="py-string">", "</tt><tt class="py-op">.</tt><tt class="py-name">join</tt><tt class="py-op">(</tt><tt class="py-name">cache_control</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L215"></a><tt class="py-lineno">215</tt>  <tt class="py-line">         </tt>
+<a name="FileMiddleware.get_mtime"></a><div id="FileMiddleware.get_mtime-def"><a name="L216"></a><tt class="py-lineno">216</tt> <a class="py-toggle" href="#" id="FileMiddleware.get_mtime-toggle" onclick="return toggle('FileMiddleware.get_mtime');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="levitas.middlewares.fileMiddleware.FileMiddleware-class.html#get_mtime">get_mtime</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">path</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="FileMiddleware.get_mtime-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="FileMiddleware.get_mtime-expanded"><a name="L217"></a><tt class="py-lineno">217</tt>  <tt class="py-line">        <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L218"></a><tt class="py-lineno">218</tt>  <tt class="py-line">            <tt class="py-name">mtime</tt> <tt class="py-op">=</tt> <tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">path</tt><tt class="py-op">.</tt><tt class="py-name">getmtime</tt><tt class="py-op">(</tt><tt class="py-name">path</tt><tt class="py-op">)</tt> </tt>
+<a name="L219"></a><tt class="py-lineno">219</tt>  <tt class="py-line">        <tt class="py-keyword">except</tt> <tt class="py-name">Exception</tt> <tt class="py-keyword">as</tt> <tt class="py-name">err</tt><tt class="py-op">:</tt> </tt>
+<a name="L220"></a><tt class="py-lineno">220</tt>  <tt class="py-line">            <tt id="link-53" class="py-name"><a title="levitas.factory.log
+levitas.handler.log
+levitas.lib.daemonize.log
+levitas.lib.levitasFieldStorage.log
+levitas.lib.secure_cookie.log
+levitas.lib.settings.log
+levitas.lib.singleton.log
+levitas.lib.winservice.WinService.log
+levitas.middleware.log
+levitas.middlewares.appMiddleware.log
+levitas.middlewares.dynSiteMiddleware.log
+levitas.middlewares.fileMiddleware.log
+levitas.middlewares.jsonMiddleware.log
+levitas.middlewares.loggerMiddleware.log
+levitas.middlewares.redirectMiddleware.log
+levitas.server.cherrypyServer.log
+levitas.server.eventletServer.log
+levitas.server.testServer.log" class="py-name" href="#" onclick="return doclink('link-53', 'log', 'link-5');">log</a></tt><tt class="py-op">.</tt><tt class="py-name">error</tt><tt class="py-op">(</tt><tt class="py-string">"Unable to get modification time of file %s"</tt> <tt class="py-op">%</tt> <tt class="py-name">path</tt><tt class="py-op">)</tt> </tt>
+<a name="L221"></a><tt class="py-lineno">221</tt>  <tt class="py-line">            <tt id="link-54" class="py-name"><a title="levitas.factory.log
+levitas.handler.log
+levitas.lib.daemonize.log
+levitas.lib.levitasFieldStorage.log
+levitas.lib.secure_cookie.log
+levitas.lib.settings.log
+levitas.lib.singleton.log
+levitas.lib.winservice.WinService.log
+levitas.middleware.log
+levitas.middlewares.appMiddleware.log
+levitas.middlewares.dynSiteMiddleware.log
+levitas.middlewares.fileMiddleware.log
+levitas.middlewares.jsonMiddleware.log
+levitas.middlewares.loggerMiddleware.log
+levitas.middlewares.redirectMiddleware.log
+levitas.server.cherrypyServer.log
+levitas.server.eventletServer.log
+levitas.server.testServer.log" class="py-name" href="#" onclick="return doclink('link-54', 'log', 'link-5');">log</a></tt><tt class="py-op">.</tt><tt class="py-name">error</tt><tt class="py-op">(</tt><tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name">err</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">exc_info</tt><tt class="py-op">=</tt><tt class="py-name">True</tt><tt class="py-op">)</tt> </tt>
+<a name="L222"></a><tt class="py-lineno">222</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-name">time</tt><tt class="py-op">.</tt><tt class="py-name">time</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L223"></a><tt class="py-lineno">223</tt>  <tt class="py-line">         </tt>
+<a name="L224"></a><tt class="py-lineno">224</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">mtime</tt> </tt>
+</div><a name="L225"></a><tt class="py-lineno">225</tt>  <tt class="py-line">         </tt>
+<a name="FileMiddleware.translate_path"></a><div id="FileMiddleware.translate_path-def"><a name="L226"></a><tt class="py-lineno">226</tt> <a class="py-toggle" href="#" id="FileMiddleware.translate_path-toggle" onclick="return toggle('FileMiddleware.translate_path');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="levitas.middlewares.fileMiddleware.FileMiddleware-class.html#translate_path">translate_path</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">path</tt><tt class="py-op">,</tt> <tt class="py-param">cwd</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="FileMiddleware.translate_path-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="FileMiddleware.translate_path-expanded"><a name="L227"></a><tt class="py-lineno">227</tt>  <tt class="py-line">        <tt class="py-docstring">"""Translate a /-separated PATH to the local filename syntax.</tt> </tt>
+<a name="L228"></a><tt class="py-lineno">228</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L229"></a><tt class="py-lineno">229</tt>  <tt class="py-line"><tt class="py-docstring">        Components that mean special things to the local file system</tt> </tt>
+<a name="L230"></a><tt class="py-lineno">230</tt>  <tt class="py-line"><tt class="py-docstring">        (e.g. drive or directory names) are ignored.  (XXX They should</tt> </tt>
+<a name="L231"></a><tt class="py-lineno">231</tt>  <tt class="py-line"><tt class="py-docstring">        probably be diagnosed.)</tt> </tt>
+<a name="L232"></a><tt class="py-lineno">232</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L233"></a><tt class="py-lineno">233</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L234"></a><tt class="py-lineno">234</tt>  <tt class="py-line">        <tt class="py-comment"># abandon query parameters</tt> </tt>
+<a name="L235"></a><tt class="py-lineno">235</tt>  <tt class="py-line">        <tt class="py-name">path</tt> <tt class="py-op">=</tt> <tt class="py-name">path</tt><tt class="py-op">.</tt><tt class="py-name">split</tt><tt class="py-op">(</tt><tt class="py-string">'?'</tt><tt class="py-op">,</tt> <tt class="py-number">1</tt><tt class="py-op">)</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt> </tt>
+<a name="L236"></a><tt class="py-lineno">236</tt>  <tt class="py-line">        <tt class="py-name">path</tt> <tt class="py-op">=</tt> <tt class="py-name">path</tt><tt class="py-op">.</tt><tt class="py-name">split</tt><tt class="py-op">(</tt><tt class="py-string">'#'</tt><tt class="py-op">,</tt> <tt class="py-number">1</tt><tt class="py-op">)</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt> </tt>
+<a name="L237"></a><tt class="py-lineno">237</tt>  <tt class="py-line">        <tt class="py-comment"># Don't forget explicit trailing slash when normalizing. Issue17324</tt> </tt>
+<a name="L238"></a><tt class="py-lineno">238</tt>  <tt class="py-line">        <tt class="py-name">trailing_slash</tt> <tt class="py-op">=</tt> <tt class="py-name">path</tt><tt class="py-op">.</tt><tt class="py-name">rstrip</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">endswith</tt><tt class="py-op">(</tt><tt class="py-string">'/'</tt><tt class="py-op">)</tt> </tt>
+<a name="L239"></a><tt class="py-lineno">239</tt>  <tt class="py-line">        <tt class="py-name">path</tt> <tt class="py-op">=</tt> <tt class="py-name">posixpath</tt><tt class="py-op">.</tt><tt class="py-name">normpath</tt><tt class="py-op">(</tt><tt class="py-name">unquote</tt><tt class="py-op">(</tt><tt class="py-name">path</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L240"></a><tt class="py-lineno">240</tt>  <tt class="py-line">        <tt class="py-name">words</tt> <tt class="py-op">=</tt> <tt class="py-name">path</tt><tt class="py-op">.</tt><tt class="py-name">split</tt><tt class="py-op">(</tt><tt class="py-string">"/"</tt><tt class="py-op">)</tt> </tt>
+<a name="L241"></a><tt class="py-lineno">241</tt>  <tt class="py-line">        <tt class="py-name">words</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-name">_f</tt> <tt class="py-keyword">for</tt> <tt class="py-name">_f</tt> <tt class="py-keyword">in</tt> <tt class="py-name">words</tt> <tt class="py-keyword">if</tt> <tt class="py-name">_f</tt><tt class="py-op">]</tt> </tt>
+<a name="L242"></a><tt class="py-lineno">242</tt>  <tt class="py-line">        <tt class="py-name">path</tt> <tt class="py-op">=</tt> <tt class="py-name">cwd</tt> </tt>
+<a name="L243"></a><tt class="py-lineno">243</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">word</tt> <tt class="py-keyword">in</tt> <tt class="py-name">words</tt><tt class="py-op">:</tt> </tt>
+<a name="L244"></a><tt class="py-lineno">244</tt>  <tt class="py-line">            <tt class="py-name">drive</tt><tt class="py-op">,</tt> <tt class="py-name">word</tt> <tt class="py-op">=</tt> <tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">path</tt><tt class="py-op">.</tt><tt class="py-name">splitdrive</tt><tt class="py-op">(</tt><tt class="py-name">word</tt><tt class="py-op">)</tt>  <tt class="py-comment"># @UnusedVariable</tt> </tt>
+<a name="L245"></a><tt class="py-lineno">245</tt>  <tt class="py-line">            <tt id="link-55" class="py-name" targets="Method levitas.middleware.Middleware.head()=levitas.middleware.Middleware-class.html#head,Method levitas.middlewares.fileMiddleware.FileMiddleware.head()=levitas.middlewares.fileMiddleware.FileMiddleware-class.html#head"><a title="levitas.middleware.Middleware.head
+levitas.middlewares.fileMiddleware.FileMiddleware.head" class="py-name" href="#" onclick="return doclink('link-55', 'head', 'link-55');">head</a></tt><tt class="py-op">,</tt> <tt class="py-name">word</tt> <tt class="py-op">=</tt> <tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">path</tt><tt class="py-op">.</tt><tt class="py-name">split</tt><tt class="py-op">(</tt><tt class="py-name">word</tt><tt class="py-op">)</tt>  <tt class="py-comment"># @UnusedVariable</tt> </tt>
+<a name="L246"></a><tt class="py-lineno">246</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">word</tt> <tt class="py-keyword">in</tt> <tt class="py-op">(</tt><tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">curdir</tt><tt class="py-op">,</tt> <tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">pardir</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L247"></a><tt class="py-lineno">247</tt>  <tt class="py-line">                <tt class="py-keyword">continue</tt> </tt>
+<a name="L248"></a><tt class="py-lineno">248</tt>  <tt class="py-line">            <tt class="py-name">path</tt> <tt class="py-op">=</tt> <tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">path</tt><tt class="py-op">.</tt><tt class="py-name">join</tt><tt class="py-op">(</tt><tt class="py-name">path</tt><tt class="py-op">,</tt> <tt class="py-name">word</tt><tt class="py-op">)</tt> </tt>
+<a name="L249"></a><tt class="py-lineno">249</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">trailing_slash</tt><tt class="py-op">:</tt> </tt>
+<a name="L250"></a><tt class="py-lineno">250</tt>  <tt class="py-line">            <tt class="py-name">path</tt> <tt class="py-op">+=</tt> <tt class="py-string">'/'</tt> </tt>
+<a name="L251"></a><tt class="py-lineno">251</tt>  <tt class="py-line"> </tt>
+<a name="L252"></a><tt class="py-lineno">252</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">path</tt> </tt>
+</div><a name="L253"></a><tt class="py-lineno">253</tt>  <tt class="py-line">             </tt>
+<a name="FileMiddleware.guess_type"></a><div id="FileMiddleware.guess_type-def"><a name="L254"></a><tt class="py-lineno">254</tt> <a class="py-toggle" href="#" id="FileMiddleware.guess_type-toggle" onclick="return toggle('FileMiddleware.guess_type');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="levitas.middlewares.fileMiddleware.FileMiddleware-class.html#guess_type">guess_type</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">path</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="FileMiddleware.guess_type-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="FileMiddleware.guess_type-expanded"><a name="L255"></a><tt class="py-lineno">255</tt>  <tt class="py-line">        <tt class="py-name">base</tt><tt class="py-op">,</tt> <tt class="py-name">ext</tt> <tt class="py-op">=</tt> <tt class="py-name">posixpath</tt><tt class="py-op">.</tt><tt class="py-name">splitext</tt><tt class="py-op">(</tt><tt class="py-name">path</tt><tt class="py-op">)</tt>  <tt class="py-comment"># @UnusedVariable</tt> </tt>
+<a name="L256"></a><tt class="py-lineno">256</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">ext</tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-56" class="py-name" targets="Variable levitas.middlewares.fileMiddleware.FileMiddleware.extensions_map=levitas.middlewares.fileMiddleware.FileMiddleware-class.html#extensions_map"><a title="levitas.middlewares.fileMiddleware.FileMiddleware.extensions_map" class="py-name" href="#" onclick="return doclink('link-56', 'extensions_map', 'link-56');">extensions_map</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L257"></a><tt class="py-lineno">257</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-57" class="py-name"><a title="levitas.middlewares.fileMiddleware.FileMiddleware.extensions_map" class="py-name" href="#" onclick="return doclink('link-57', 'extensions_map', 'link-56');">extensions_map</a></tt><tt class="py-op">[</tt><tt class="py-name">ext</tt><tt class="py-op">]</tt> </tt>
+<a name="L258"></a><tt class="py-lineno">258</tt>  <tt class="py-line">        <tt class="py-name">ext</tt> <tt class="py-op">=</tt> <tt class="py-name">ext</tt><tt class="py-op">.</tt><tt class="py-name">lower</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L259"></a><tt class="py-lineno">259</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">ext</tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-58" class="py-name"><a title="levitas.middlewares.fileMiddleware.FileMiddleware.extensions_map" class="py-name" href="#" onclick="return doclink('link-58', 'extensions_map', 'link-56');">extensions_map</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L260"></a><tt class="py-lineno">260</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-59" class="py-name"><a title="levitas.middlewares.fileMiddleware.FileMiddleware.extensions_map" class="py-name" href="#" onclick="return doclink('link-59', 'extensions_map', 'link-56');">extensions_map</a></tt><tt class="py-op">[</tt><tt class="py-name">ext</tt><tt class="py-op">]</tt> </tt>
+<a name="L261"></a><tt class="py-lineno">261</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L262"></a><tt class="py-lineno">262</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-60" class="py-name"><a title="levitas.middlewares.fileMiddleware.FileMiddleware.extensions_map" class="py-name" href="#" onclick="return doclink('link-60', 'extensions_map', 'link-56');">extensions_map</a></tt><tt class="py-op">[</tt><tt class="py-string">""</tt><tt class="py-op">]</tt> </tt>
+</div><a name="L263"></a><tt class="py-lineno">263</tt>  <tt class="py-line"> </tt>
+<a name="L264"></a><tt class="py-lineno">264</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name">mimetypes</tt><tt class="py-op">.</tt><tt class="py-name">inited</tt><tt class="py-op">:</tt> </tt>
+<a name="L265"></a><tt class="py-lineno">265</tt>  <tt class="py-line">        <tt class="py-name">mimetypes</tt><tt class="py-op">.</tt><tt class="py-name">init</tt><tt class="py-op">(</tt><tt class="py-op">)</tt>  <tt class="py-comment"># try to read system mime.types</tt> </tt>
+<a name="L266"></a><tt class="py-lineno">266</tt>  <tt class="py-line">    <tt id="link-61" class="py-name"><a title="levitas.middlewares.fileMiddleware.FileMiddleware.extensions_map" class="py-name" href="#" onclick="return doclink('link-61', 'extensions_map', 'link-56');">extensions_map</a></tt> <tt class="py-op">=</tt> <tt class="py-name">mimetypes</tt><tt class="py-op">.</tt><tt class="py-name">types_map</tt><tt class="py-op">.</tt><tt class="py-name">copy</tt><tt class="py-op">(</tt><tt class="py-op">)</tt>  <tt class="py-comment"># @UndefinedVariable</tt> </tt>
+<a name="L267"></a><tt class="py-lineno">267</tt>  <tt class="py-line">    <tt id="link-62" class="py-name"><a title="levitas.middlewares.fileMiddleware.FileMiddleware.extensions_map" class="py-name" href="#" onclick="return doclink('link-62', 'extensions_map', 'link-56');">extensions_map</a></tt><tt class="py-op">.</tt><tt class="py-name">update</tt><tt class="py-op">(</tt><tt class="py-op">{</tt> </tt>
+<a name="L268"></a><tt class="py-lineno">268</tt>  <tt class="py-line">        <tt class="py-string">""</tt><tt class="py-op">:</tt> <tt class="py-string">"application/octet-stream"</tt><tt class="py-op">,</tt>  <tt class="py-comment"># Default</tt> </tt>
+<a name="L269"></a><tt class="py-lineno">269</tt>  <tt class="py-line">        <tt class="py-string">".py"</tt><tt class="py-op">:</tt> <tt class="py-string">"text/plain"</tt><tt class="py-op">,</tt> </tt>
+<a name="L270"></a><tt class="py-lineno">270</tt>  <tt class="py-line">        <tt class="py-string">".c"</tt><tt class="py-op">:</tt> <tt class="py-string">"text/plain"</tt><tt class="py-op">,</tt> </tt>
+<a name="L271"></a><tt class="py-lineno">271</tt>  <tt class="py-line">        <tt class="py-string">".h"</tt><tt class="py-op">:</tt> <tt class="py-string">"text/plain"</tt><tt class="py-op">,</tt> </tt>
+<a name="L272"></a><tt class="py-lineno">272</tt>  <tt class="py-line">        <tt class="py-string">".appcache"</tt><tt class="py-op">:</tt> <tt class="py-string">"text/cache-manifest"</tt><tt class="py-op">,</tt> </tt>
+<a name="L273"></a><tt class="py-lineno">273</tt>  <tt class="py-line">        <tt class="py-string">".webapp"</tt><tt class="py-op">:</tt> <tt class="py-string">"application/x-web-app-manifest+json"</tt> </tt>
+<a name="L274"></a><tt class="py-lineno">274</tt>  <tt class="py-line">        <tt class="py-op">}</tt><tt class="py-op">)</tt> </tt>
+<a name="L275"></a><tt class="py-lineno">275</tt>  <tt class="py-line">    <tt id="link-63" class="py-name"><a title="levitas.middlewares.fileMiddleware.FileMiddleware.extensions_map" class="py-name" href="#" onclick="return doclink('link-63', 'extensions_map', 'link-56');">extensions_map</a></tt><tt class="py-op">.</tt><tt class="py-name">update</tt><tt class="py-op">(</tt><tt id="link-64" class="py-name"><a title="levitas.middlewares.fileMiddleware.FileMiddleware.MIMETYPES" class="py-name" href="#" onclick="return doclink('link-64', 'MIMETYPES', 'link-8');">MIMETYPES</a></tt><tt class="py-op">)</tt> </tt>
+</div><a name="L276"></a><tt class="py-lineno">276</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="levitas-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Wed Apr 16 11:40:43 2014
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

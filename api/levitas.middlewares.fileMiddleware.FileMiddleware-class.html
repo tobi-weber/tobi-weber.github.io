@@ -1,0 +1,793 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>levitas.middlewares.fileMiddleware.FileMiddleware</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="levitas-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="levitas-module.html">Package&nbsp;levitas</a> ::
+        <a href="levitas.middlewares-module.html">Package&nbsp;middlewares</a> ::
+        <a href="levitas.middlewares.fileMiddleware-module.html">Module&nbsp;fileMiddleware</a> ::
+        Class&nbsp;FileMiddleware
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="levitas.middlewares.fileMiddleware.FileMiddleware-class.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS DESCRIPTION ==================== -->
+<h1 class="epydoc">Class FileMiddleware</h1><p class="nomargin-top"><span class="codelink"><a href="levitas.middlewares.fileMiddleware-pysrc.html#FileMiddleware">source&nbsp;code</a></span></p>
+<pre class="base-tree">
+           object --+    
+                    |    
+<a href="levitas.middleware.Middleware-class.html">middleware.Middleware</a> --+
+                        |
+                       <strong class="uidshort">FileMiddleware</strong>
+</pre>
+
+<hr />
+<p>Handles static files from a given path.</p>
+  <p>Example settings entry: urls = [(r&quot;^/(.*)&quot;, FileMiddleware, 
+  {&quot;path&quot;: &quot;/path/to/files&quot;})]</p>
+
+<!-- ==================== INSTANCE METHODS ==================== -->
+<a name="section-InstanceMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Instance Methods</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-InstanceMethods"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="levitas.middlewares.fileMiddleware.FileMiddleware-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">path</span>)</span><br />
+      x.__init__(...) initializes x; see help(type(x)) for signature</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="levitas.middlewares.fileMiddleware-pysrc.html#FileMiddleware.__init__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="levitas.middlewares.fileMiddleware.FileMiddleware-class.html#prepare" class="summary-sig-name">prepare</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Called before the request-method is called.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="levitas.middlewares.fileMiddleware-pysrc.html#FileMiddleware.prepare">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="preparePath"></a><span class="summary-sig-name">preparePath</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      set the path in the filesystem</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="levitas.middlewares.fileMiddleware-pysrc.html#FileMiddleware.preparePath">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="prepareFile"></a><span class="summary-sig-name">prepareFile</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      set the content-type and the file-size</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="levitas.middlewares.fileMiddleware-pysrc.html#FileMiddleware.prepareFile">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="response_file"></a><span class="summary-sig-name">response_file</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="levitas.middlewares.fileMiddleware-pysrc.html#FileMiddleware.response_file">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="levitas.middlewares.fileMiddleware.FileMiddleware-class.html#get" class="summary-sig-name">get</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Can be overridden by sub-classes.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="levitas.middlewares.fileMiddleware-pysrc.html#FileMiddleware.get">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="levitas.middlewares.fileMiddleware.FileMiddleware-class.html#head" class="summary-sig-name">head</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Can be overridden by sub-classes.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="levitas.middlewares.fileMiddleware-pysrc.html#FileMiddleware.head">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="getFile"></a><span class="summary-sig-name">getFile</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">path</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="levitas.middlewares.fileMiddleware-pysrc.html#FileMiddleware.getFile">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="checkCacheInfo"></a><span class="summary-sig-name">checkCacheInfo</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">path</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="levitas.middlewares.fileMiddleware-pysrc.html#FileMiddleware.checkCacheInfo">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="prepareCacheHeaders"></a><span class="summary-sig-name">prepareCacheHeaders</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="levitas.middlewares.fileMiddleware-pysrc.html#FileMiddleware.prepareCacheHeaders">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="setCacheHeaders"></a><span class="summary-sig-name">setCacheHeaders</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">path</span>,
+        <span class="summary-sig-arg">no_cache</span>=<span class="summary-sig-default">False</span>,
+        <span class="summary-sig-arg">no_store</span>=<span class="summary-sig-default">False</span>,
+        <span class="summary-sig-arg">max_age</span>=<span class="summary-sig-default">0</span>,
+        <span class="summary-sig-arg">must_revalidate</span>=<span class="summary-sig-default">False</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="levitas.middlewares.fileMiddleware-pysrc.html#FileMiddleware.setCacheHeaders">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="get_mtime"></a><span class="summary-sig-name">get_mtime</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">path</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="levitas.middlewares.fileMiddleware-pysrc.html#FileMiddleware.get_mtime">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="levitas.middlewares.fileMiddleware.FileMiddleware-class.html#translate_path" class="summary-sig-name">translate_path</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">path</span>,
+        <span class="summary-sig-arg">cwd</span>)</span><br />
+      Translate a /-separated PATH to the local filename syntax.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="levitas.middlewares.fileMiddleware-pysrc.html#FileMiddleware.translate_path">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="guess_type"></a><span class="summary-sig-name">guess_type</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">path</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="levitas.middlewares.fileMiddleware-pysrc.html#FileMiddleware.guess_type">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code><a href="levitas.middleware.Middleware-class.html">middleware.Middleware</a></code></b>:
+      <code><a href="levitas.middleware.Middleware-class.html#__call__">__call__</a></code>,
+      <code><a href="levitas.middleware.Middleware-class.html#addHeader">addHeader</a></code>,
+      <code><a href="levitas.middleware.Middleware-class.html#clear_all_cookies">clear_all_cookies</a></code>,
+      <code><a href="levitas.middleware.Middleware-class.html#clear_cookie">clear_cookie</a></code>,
+      <code><a href="levitas.middleware.Middleware-class.html#delete">delete</a></code>,
+      <code><a href="levitas.middleware.Middleware-class.html#getHeader">getHeader</a></code>,
+      <code><a href="levitas.middleware.Middleware-class.html#getPath">getPath</a></code>,
+      <code><a href="levitas.middleware.Middleware-class.html#get_browser_language">get_browser_language</a></code>,
+      <code><a href="levitas.middleware.Middleware-class.html#get_cookie">get_cookie</a></code>,
+      <code><a href="levitas.middleware.Middleware-class.html#get_signed_cookie">get_signed_cookie</a></code>,
+      <code><a href="levitas.middleware.Middleware-class.html#initEnviron">initEnviron</a></code>,
+      <code><a href="levitas.middleware.Middleware-class.html#log_error">log_error</a></code>,
+      <code><a href="levitas.middleware.Middleware-class.html#log_message">log_message</a></code>,
+      <code><a href="levitas.middleware.Middleware-class.html#log_request">log_request</a></code>,
+      <code><a href="levitas.middleware.Middleware-class.html#parseGET">parseGET</a></code>,
+      <code><a href="levitas.middleware.Middleware-class.html#parsePOST">parsePOST</a></code>,
+      <code><a href="levitas.middleware.Middleware-class.html#post">post</a></code>,
+      <code><a href="levitas.middleware.Middleware-class.html#put">put</a></code>,
+      <code><a href="levitas.middleware.Middleware-class.html#redirect">redirect</a></code>,
+      <code><a href="levitas.middleware.Middleware-class.html#responseError">responseError</a></code>,
+      <code><a href="levitas.middleware.Middleware-class.html#set_cookie">set_cookie</a></code>,
+      <code><a href="levitas.middleware.Middleware-class.html#set_signed_cookie">set_signed_cookie</a></code>,
+      <code><a href="levitas.middleware.Middleware-class.html#url_groups">url_groups</a></code>
+      </p>
+    <div class="private">    <p class="indent-wrapped-lines"><b>Inherited from <code><a href="levitas.middleware.Middleware-class.html">middleware.Middleware</a></code></b> (private):
+      <code><a href="levitas.middleware.Middleware-class.html#_getFilewrapper" onclick="show_private();">_getFilewrapper</a></code>,
+      <code><a href="levitas.middleware.Middleware-class.html#_loadCookies" onclick="show_private();">_loadCookies</a></code>,
+      <code><a href="levitas.middleware.Middleware-class.html#_parse_qs" onclick="show_private();">_parse_qs</a></code>,
+      <code><a href="levitas.middleware.Middleware-class.html#_readEnviron" onclick="show_private();">_readEnviron</a></code>,
+      <code><a href="levitas.middleware.Middleware-class.html#_startResponse" onclick="show_private();">_startResponse</a></code>
+      </p></div>
+    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
+      <code>__delattr__</code>,
+      <code>__format__</code>,
+      <code>__getattribute__</code>,
+      <code>__hash__</code>,
+      <code>__new__</code>,
+      <code>__reduce__</code>,
+      <code>__reduce_ex__</code>,
+      <code>__repr__</code>,
+      <code>__setattr__</code>,
+      <code>__sizeof__</code>,
+      <code>__str__</code>,
+      <code>__subclasshook__</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS VARIABLES ==================== -->
+<a name="section-ClassVariables"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Class Variables</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-ClassVariables"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="LOG"></a><span class="summary-name">LOG</span> = <code title="True">True</code><br />
+      If the request should be logged
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="BLOCKSIZE"></a><span class="summary-name">BLOCKSIZE</span> = <code title="4096">4096</code><br />
+      Blocksize for sending files
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="MIMETYPES"></a><span class="summary-name">MIMETYPES</span> = <code title="{}">{}</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="DAY_SEC"></a><span class="summary-name">DAY_SEC</span> = <code title="360* 24* 60* 60">360* 24* 60* 60</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="levitas.middlewares.fileMiddleware.FileMiddleware-class.html#CACHE" class="summary-name">CACHE</a> = <code title="{&quot;.htm&quot;: {&quot;max_age&quot;: DAY_SEC, &quot;must_revalidate&quot;: True}, &quot;.html&quot;: {&quot;max\
+_age&quot;: DAY_SEC, &quot;must_revalidate&quot;: True}, &quot;.ico&quot;: {&quot;max_age&quot;: DAY_SEC,\
+ &quot;must_revalidate&quot;: True}, &quot;.jpg&quot;: {&quot;max_age&quot;: DAY_SEC, &quot;must_revalida\
+te&quot;: True}, &quot;.jpeg&quot;: {&quot;max_age&quot;: DAY_SEC, &quot;must_revalidate&quot;: True}, &quot;.\
+png&quot;: {&quot;max_age&quot;: DAY_SEC, &quot;must_revalidate&quot;: True}, &quot;.gif&quot;: {&quot;max_age\
+&quot;: DAY_SEC, &quot;must_revalidate&quot;: True}, &quot;.swf&quot;: {&quot;max_age&quot;: DAY_SEC, &quot;mu\
+st_revalidate&quot;: True}, &quot;.js&quot;: {&quot;max_age&quot;: DAY_SEC, &quot;must_revalidate&quot;: \
+True}, &quot;.css&quot;: {&quot;max_age&quot;: DAY_SEC, &quot;must_revalidate&quot;: True},}">{&quot;.htm&quot;: {&quot;max_age&quot;: DAY_SEC, &quot;must_revalidate&quot;: True}<code class="variable-ellipsis">...</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="extensions_map"></a><span class="summary-name">extensions_map</span> = <code title="mimetypes.types_map.copy()">mimetypes.types_map.copy()</code>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code><a href="levitas.middleware.Middleware-class.html">middleware.Middleware</a></code></b>:
+      <code><a href="levitas.middleware.Middleware-class.html#ERROR_CONTENT_TYPE">ERROR_CONTENT_TYPE</a></code>,
+      <code><a href="levitas.middleware.Middleware-class.html#ERROR_MESSAGE_FORMAT">ERROR_MESSAGE_FORMAT</a></code>,
+      <code><a href="levitas.middleware.Middleware-class.html#SUPPORTED_METHODS">SUPPORTED_METHODS</a></code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== INSTANCE VARIABLES ==================== -->
+<a name="section-InstanceVariables"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Instance Variables</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-InstanceVariables"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="static_path"></a><span class="summary-name">static_path</span><br />
+      Path to the static files
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="ctype"></a><span class="summary-name">ctype</span><br />
+      The content-type of the file
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="size"></a><span class="summary-name">size</span><br />
+      file-size
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="fpath"></a><span class="summary-name">fpath</span><br />
+      absolute path of the file
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code><a href="levitas.middleware.Middleware-class.html">middleware.Middleware</a></code></b>:
+      <code><a href="levitas.middleware.Middleware-class.html#cookies">cookies</a></code>,
+      <code><a href="levitas.middleware.Middleware-class.html#path">path</a></code>,
+      <code><a href="levitas.middleware.Middleware-class.html#query_string">query_string</a></code>,
+      <code><a href="levitas.middleware.Middleware-class.html#re_match">re_match</a></code>,
+      <code><a href="levitas.middleware.Middleware-class.html#remote_address">remote_address</a></code>,
+      <code><a href="levitas.middleware.Middleware-class.html#remote_host">remote_host</a></code>,
+      <code><a href="levitas.middleware.Middleware-class.html#request_data">request_data</a></code>,
+      <code><a href="levitas.middleware.Middleware-class.html#request_headers">request_headers</a></code>,
+      <code><a href="levitas.middleware.Middleware-class.html#request_method">request_method</a></code>,
+      <code><a href="levitas.middleware.Middleware-class.html#response_code">response_code</a></code>,
+      <code><a href="levitas.middleware.Middleware-class.html#response_headers">response_headers</a></code>,
+      <code><a href="levitas.middleware.Middleware-class.html#server_name">server_name</a></code>,
+      <code><a href="levitas.middleware.Middleware-class.html#server_port">server_port</a></code>,
+      <code><a href="levitas.middleware.Middleware-class.html#settings">settings</a></code>,
+      <code><a href="levitas.middleware.Middleware-class.html#url_scheme">url_scheme</a></code>,
+      <code><a href="levitas.middleware.Middleware-class.html#user_agent">user_agent</a></code>
+      </p>
+    <div class="private">    <p class="indent-wrapped-lines"><b>Inherited from <code><a href="levitas.middleware.Middleware-class.html">middleware.Middleware</a></code></b> (private):
+      <code><a href="levitas.middleware.Middleware-class.html#_new_cookies" onclick="show_private();">_new_cookies</a></code>
+      </p></div>
+    </td>
+  </tr>
+</table>
+<!-- ==================== PROPERTIES ==================== -->
+<a name="section-Properties"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Properties</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-Properties"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
+      <code>__class__</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== METHOD DETAILS ==================== -->
+<a name="section-MethodDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Method Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-MethodDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="__init__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">path</span>)</span>
+    <br /><em class="fname">(Constructor)</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="levitas.middlewares.fileMiddleware-pysrc.html#FileMiddleware.__init__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>x.__init__(...) initializes x; see help(type(x)) for signature</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>path</code></strong> - Path of files to serve</li>
+    </ul></dd>
+    <dt>Overrides:
+        object.__init__
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="prepare"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">prepare</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="levitas.middlewares.fileMiddleware-pysrc.html#FileMiddleware.prepare">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Called before the request-method is called. Can be overridden by 
+  sub-classes.</p>
+  <dl class="fields">
+    <dt>Overrides:
+        <a href="levitas.middleware.Middleware-class.html#prepare">middleware.Middleware.prepare</a>
+        <dd><em class="note">(inherited documentation)</em></dd>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="get"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">get</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="levitas.middlewares.fileMiddleware-pysrc.html#FileMiddleware.get">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Can be overridden by sub-classes.</p>
+  <dl class="fields">
+    <dt>Overrides:
+        <a href="levitas.middleware.Middleware-class.html#get">middleware.Middleware.get</a>
+        <dd><em class="note">(inherited documentation)</em></dd>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="head"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">head</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="levitas.middlewares.fileMiddleware-pysrc.html#FileMiddleware.head">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Can be overridden by sub-classes.</p>
+  <dl class="fields">
+    <dt>Overrides:
+        <a href="levitas.middleware.Middleware-class.html#head">middleware.Middleware.head</a>
+        <dd><em class="note">(inherited documentation)</em></dd>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="translate_path"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">translate_path</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">path</span>,
+        <span class="sig-arg">cwd</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="levitas.middlewares.fileMiddleware-pysrc.html#FileMiddleware.translate_path">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Translate a /-separated PATH to the local filename syntax.</p>
+  <p>Components that mean special things to the local file system (e.g. 
+  drive or directory names) are ignored.  (XXX They should probably be 
+  diagnosed.)</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== CLASS VARIABLE DETAILS ==================== -->
+<a name="section-ClassVariableDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Class Variable Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-ClassVariableDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="CACHE"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">CACHE</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+{&quot;.htm&quot;: {&quot;max_age&quot;: DAY_SEC, &quot;must_revalidate&quot;: True}, &quot;.html&quot;: {&quot;max<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+_age&quot;: DAY_SEC, &quot;must_revalidate&quot;: True}, &quot;.ico&quot;: {&quot;max_age&quot;: DAY_SEC,<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+ &quot;must_revalidate&quot;: True}, &quot;.jpg&quot;: {&quot;max_age&quot;: DAY_SEC, &quot;must_revalida<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+te&quot;: True}, &quot;.jpeg&quot;: {&quot;max_age&quot;: DAY_SEC, &quot;must_revalidate&quot;: True}, &quot;.<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+png&quot;: {&quot;max_age&quot;: DAY_SEC, &quot;must_revalidate&quot;: True}, &quot;.gif&quot;: {&quot;max_age<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+&quot;: DAY_SEC, &quot;must_revalidate&quot;: True}, &quot;.swf&quot;: {&quot;max_age&quot;: DAY_SEC, &quot;mu<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+st_revalidate&quot;: True}, &quot;.js&quot;: {&quot;max_age&quot;: DAY_SEC, &quot;must_revalidate&quot;: <span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+True}, &quot;.css&quot;: {&quot;max_age&quot;: DAY_SEC, &quot;must_revalidate&quot;: True},}
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="levitas-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Wed Apr 16 11:40:43 2014
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

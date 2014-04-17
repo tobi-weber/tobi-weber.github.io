@@ -12,16 +12,16 @@ project: levitas
 
 Levitas is a lightweight wsgi framework.
 
-The main concept is the mapping between urls, regular expressions and a
-corresponding handler class. 
+The main concept is the mapping between urls as regular expressions and a
+corresponding python class. 
 Levitas is designed to be simple to implement and extendable.
 
 Levitas defines basic methods to handle headers, cookies, form data and query strings.
 Configuration is easily made with a settings file. 
 
-Levitas provides pre-defined ready to use classes for static files, json-rpc services,
+Levitas provides predefined ready to use classes for static files, json-rpc services,
 redirection, logging and dynamic content. But programmers don't need to use them,
-they can easily develop there own classes.
+they can easily develop there own functionalities.
 
 Levitas works with python 2.7 and python 3.x. No other dependencies are needed.
 
@@ -81,14 +81,13 @@ and you should get the ```Hello world!``` message.
 
 A middleware class inherits the Levitas
 <a href="/api/levitas.middleware.Middleware-class.html" target="_blank">Middleware class</a>.
-It defines the http methods *get*, *post*, *delete*, *put* and *head*. The inherited class
+It defines the http methods **get**, **post**, **delete**, **put** and **head**. The inherited class
 must override one or more of these methods and return the response for the request.
 
-In the above example the *get* method returns a string ```Hello world!```.
+In the above example the **get** method returns a string ```Hello world!```.
 The return type for the response can be a string, an iterable object or a file object.
-The values of the iterable object must be strings.
  
-Also the base middleware class provides several instance variables and methods, like the path of the
+The base middleware class provides several instance variables and methods, like the path of the
 url or methods to get and set cookies. 
 
 
@@ -97,12 +96,12 @@ url or methods to get and set cookies.
 A settings file is a python module, which defines the behaviour of the application.
 The settings module is the entry point of the application and must be in the python path.
 It defines the mapping between urls and middleware classes.
-Also the mapping can be extended with positional and named parameters, to instantiate the
+The mapping can be extended with positional and named parameters, to instantiate the
 middleware.
 
-In the above example, the path ```/``` will be mapped to the ```MyMiddleware``` class.
+In the above example, the path ```/``` is mapped to the ```MyMiddleware``` class.
 
-Also file can further configurations be made in the settings.
+Further configurations can be made in the settings file.
 As example, the testing server can be configured to another port.
 The settings file will then be:
 
@@ -120,10 +119,10 @@ Custom Middleware classes can define also there own settings variables.
 
 ## An application that uses regular expressions
 
-Assuming you like to write a blog application that should return entries with a path 
+Assuming you like to write a blog application that returns entries with a path 
 structure like ```/blog/year/month/date``` (e.g. ```/blog/2014/04/13```).
 
-First the blog middleware:
+The blog middleware:
 
 ```python
 from levitas.middleware import Middleware
@@ -137,7 +136,7 @@ Copy the code above and save it in a file called
 ```blogMiddleware.py```.
 
 
-And then the settings file:
+The settings file:
 
 ```python
 from blogMiddleware import BlogMiddleware
@@ -160,13 +159,8 @@ and you should get the ```Blog entry 2014-04-13``` message.
 
 ### How regular expressions works
 
-The regular expression syntax is explained in the python documentation:
-
-* [python 2](https://docs.python.org/2/library/re.html)
-* [python 3](https://docs.python.org/3/library/re.html)
-
 In the above example the pattern ```r"^/blog/(\d{4})/(\d{2})/(\d{2})$"``` defines,
-that the BlogMiddleware will be called if the patch begins with ```/blog``` and the further
+that the BlogMiddleware will be called if the path begins with ```/blog``` and the further
 path components are a 4 digits, 2 digits and 2 digits for year/month/day.
 
 Levitas will set a [python match object](https://docs.python.org/3/library/re.html#match-objects)
