@@ -240,6 +240,97 @@ Call the url [http://localhost:8080/](http://localhost:8080/) to see the result.
 
 ## JSON-RPC services - JSONMiddleware
 
+The JSON-RPC middleware supports version 2 of the [JSON-RPC specification] (http://www.jsonrpc.org).
+The following sections describes the http request/response and an simple example.
+
+### HTTP JSON-RPC requests and responses
+
+* The Content-Type can be 'text/json' or 'application/json'
+or 'text/json-rpc' or 'application/json-rpc'
+* The Content-Length must be specified.
+* The POST body contains the Object request specified in [section 4] (http://www.jsonrpc.org/specification).
+* Response to a Post contains the Object response specified in [section 5] (http://www.jsonrpc.org/specification).
+
+
+### A simple json service
+
+Here is a small example to show how to write and serve a JSON service.
+
+The service class:
+
+```python
+from levitas.middleware.service import Service
+
+
+class MyService(Service):
+    
+    def getMessage(self):
+    	# Return the message configured in service_attributes
+        return self.msg
+    
+    def sendMessage(self, msg):
+        client = self.middleware.remote_host
+        return "Message from %s: %s" % (client, msg)
+    
+    def _prepare(self):
+        """
+        Method will be called after service class is instantiated.
+        """
+        pass
+    
+    def _complete(self):
+        """
+        Method will be called after service method is finished.
+        """
+        pass
+```
+
+
+Copy the code above and save it in a file called ```myService.py```.
+
+
+The settings file:
+
+```python
+from levitas.middleware.jsonMiddleware import JSONMiddleware
+
+from myService import MyService
+
+
+urls = [
+     (r"^/json/myservice", JSONMiddleware, {"service_class": MyService,
+     										"service_attributes":
+     										{"msg": "Hello World!"}
+     										}),
+   ]
+
+```
+
+Copy the code above and save it in a file called ```settings.py```.
+
+
+Start the apllication:
+
+```
+levitas-httpd -s settings
+```
+
+Test the service methods in a python console:
+
+```python
+>>> import urllib2
+>>> headers = {"Content-type": "application/json-rpc"}
+>>> opener = urllib2.build_opener()
+>>> url = "http://localhost:8080/json/myservice"
+>>> data = '{"jsonrpc":"2.0","id":"ID01","method":"getMessage","params": []}'
+>>> request = urllib2.Request(url, data=data, headers=headers)
+>>> response = opener.open(request)
+>>> print response.read()
+>>> data = '{"jsonrpc":"2.0","id":"ID02","method":"sendMessage","params": ["Hello Server!"]}'
+>>> request = urllib2.Request(url, data=data, headers=headers)
+>>> response = opener.open(request)
+>>> print response.read()
+```
 
 ## Redirect urls - RedirectMiddleware
 
