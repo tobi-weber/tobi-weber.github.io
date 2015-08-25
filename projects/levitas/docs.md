@@ -226,10 +226,51 @@ levitas-testserver -s settings
 Call the url [http://localhost:8080/](http://localhost:8080/) to see the result.
 
 
-## Define own settings
+## Custom settings attributes
+
+Custom settings attributes can be marked as required.
+The following example shows how this can be done.
+
+```python
+from levitas.lib.settings import Settings
+from levitas.middleware import Middleware
+
+class MyMiddleware(Middleware):
+	
+	def get(self):
+		settings = Settings()
+		settings.require("custom_attr", example="custom_attr = 'Some string'")
+		return settings.custom_attr
+```
+Copy the code above and save it in a file called
+```myMiddleware.py```.
+
+
+Define the settings file:
+
+```python
+from myMiddleware import MyMiddleware
+
+custom_attr = "Hello World!"
+
+urls = [(r"^/$", MyMiddleware)]
+```
+Copy the code above and save it in a file called
+```settings.py```.
+
+Start the application:
+
+```
+levitas-testserver -s settings
+```
+
+Call the url [http://localhost:8080/](http://localhost:8080/)
+and you should get the ```Hello world!``` message.
 
 
 # The Settings module
+
+The settings module is the application entry. 
 
 
 # Predefined middlewares
@@ -271,7 +312,7 @@ class MyService(Service):
     def sendMessage(self, msg):
         client = self.middleware.remote_host
         return "Message from %s: %s" % (client, msg)
-    
+        
     def _prepare(self):
         """
         Method will be called after service class is instantiated.
